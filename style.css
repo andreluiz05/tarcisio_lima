@@ -1,0 +1,394 @@
+/* ========================= */
+/* reset                     */
+/* ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* variaveis                 */
+/* ========================= */
+:root {
+  --bg-main: #000;
+  --bg-soft: #111;
+  --text-main: #fff;
+  --text-soft: #cfcfcf;
+  --accent: #e6d37a;
+}
+
+/* ========================= */
+/* base                      */
+/* ========================= */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.8;
+  padding-top: 19px;
+}
+
+/* ========================= */
+/* whatsapp flutuante        */
+/* ========================= */
+.whatsapp-fixo {
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+  z-index: 999;
+}
+
+.whatsapp-fixo img {
+  width: 110px;
+  cursor: pointer;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+.whatsapp-fixo img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+}
+
+.whatsapp-fixo img:active {
+  transform: scale(.95);
+}
+
+/* ========================= */
+/* navbar                    */
+/* ========================= */
+.barra-topo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  z-index: 1000;
+}
+
+.area-topo {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 25px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* logo */
+.logo-topo {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.logo-topo img {
+  width: 160px;
+  border-radius: 10%;
+  filter: invert(100%);
+  transition: transform .3s ease;
+}
+
+.logo-topo img:hover {
+  transform: scale(1.04);
+}
+
+/* menu desktop */
+.menu-topo {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  gap: 28px;
+}
+
+.menu-topo a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-decoration: none;
+  position: relative;
+}
+
+.menu-topo a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width .3s ease;
+}
+
+.menu-topo a:hover {
+  color: var(--accent);
+}
+
+.menu-topo a:hover::after {
+  width: 100%;
+}
+
+/* fundo escuro mobile */
+#fundoEscuro {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 998;
+}
+
+#fundoEscuro.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* botao hamburguer */
+.btn-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* capa                      */
+/* ========================= */
+.capa {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.foto-capa {
+  margin-top: 80px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+}
+
+/* ========================= */
+/* agenda                    */
+/* ========================= */
+.agenda {
+  padding: 80px 20px;
+  background: #000;
+  text-align: center;
+}
+
+.agenda h2 {
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+
+.agenda-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.agenda-track {
+  display: flex;
+  gap: 20px;
+  transition: transform .4s ease;
+}
+
+.agenda-card {
+  min-width: 280px;
+  background: #111;
+  border: 1px solid #222;
+  padding: 25px;
+  text-align: left;
+}
+
+.agenda-card .data {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b85e6;
+}
+
+.agenda-card h3 {
+  margin: 10px 0 5px;
+  font-size: 20px;
+}
+
+.agenda-card p {
+  font-size: 15px;
+  color: #aaa;
+}
+
+.agenda-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.agenda-btn.prev { left: 0; }
+.agenda-btn.next { right: 0; }
+
+/* ========================= */
+/* videos                    */
+/* ========================= */
+.videos {
+  padding: 80px 20px;
+  background: var(--bg-soft);
+}
+
+.videos h2{
+  text-align: center;
+}
+
+.area-videos {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.area-videos video {
+  width: 320px;
+  border-radius: 14px;
+  border: 1px solid #222;
+}
+
+/* ========================= */
+/* sobre                     */
+/* ========================= */
+.sobre {
+  padding: 100px 20px;
+  background: #0d0d0d;
+}
+
+.sobre-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.sobre h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.sobre p {
+  font-size: 18px;
+  color: #ccc;
+}
+
+/* ========================= */
+/* contato                   */
+/* ========================= */
+.contato {
+  padding: 100px 20px;
+  background: #000;
+}
+
+.contato-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.contato h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.contato-redes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contato-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform .3s ease;
+}
+
+.contato-item img {
+  width: 95px;
+  transition: transform .3s ease;
+}
+
+.contato-item:hover {
+  transform: translateY(-6px);
+}
+
+.contato-item:hover img {
+  transform: scale(1.15);
+}
+
+.contato-item:active {
+  transform: scale(.95);
+}
+
+/* ========================= */
+/* rodape                    */
+/* ========================= */
+.rodape {
+  padding: 25px;
+  font-size: 13px;
+  color: #777;
+  text-align: center;
+}
+
+/* ========================= */
+/* mobile e tablet           */
+/* ========================= */
+@media (max-width: 768px) {
+
+  .btn-menu {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+  }
+
+  .menu-topo {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 75%;
+    height: 100vh;
+    background: #0d0d0d;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: left .3s ease;
+    z-index: 999;
+  }
+
+  .menu-topo.ativo {
+    left: 0;
+  }
+
+  .menu-topo a {
+    font-size: 22px;
+  }
+
+  .foto-capa {
+    max-width: 100%;
+  }
+}
