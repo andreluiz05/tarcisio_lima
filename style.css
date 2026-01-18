@@ -1,5 +1,5 @@
 /* ========================= */
-/* reset                     */
+/* RESET                     */
 /* ========================= */
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 /* ========================= */
-/* variaveis                 */
+/* VARIAVEIS                 */
 /* ========================= */
 :root {
   --bg-main: #000;
@@ -19,7 +19,7 @@
 }
 
 /* ========================= */
-/* base                      */
+/* BASE                      */
 /* ========================= */
 body {
   font-family: 'Inter', Arial, sans-serif;
@@ -27,43 +27,47 @@ body {
   color: var(--text-main);
   line-height: 1.8;
   padding-top: 19px;
+  overflow-x: hidden; /* Evita rolagem horizontal acidental */
+}
+
+/* Regra de segurança para responsividade global */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ========================= */
-/* whatsapp flutuante        */
+/* WHATSAPP FLUTUANTE        */
 /* ========================= */
 .whatsapp-fixo {
   position: fixed;
-  bottom: 5px;
-  right: 10px;
+  bottom: 15px; /* Ajustado para não colar na borda */
+  right: 15px;
   z-index: 999;
 }
 
 .whatsapp-fixo img {
-  width: 110px;
+  width: 60px; /* Tamanho padrão mais discreto */
   cursor: pointer;
   transition: transform .3s ease, filter .3s ease;
 }
 
 .whatsapp-fixo img:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
   filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
 }
 
-.whatsapp-fixo img:active {
-  transform: scale(.95);
-}
-
 /* ========================= */
-/* navbar                    */
+/* NAVBAR                    */
 /* ========================= */
 .barra-topo {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0,0,0,.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,.85); /* Um pouco mais escuro para leitura */
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.08);
   z-index: 1000;
 }
@@ -77,15 +81,15 @@ body {
   align-items: center;
 }
 
-/* logo */
+/* Logo */
 .logo-topo {
   grid-column: 2;
   justify-self: center;
 }
 
 .logo-topo img {
-  width: 160px;
-  border-radius: 10%;
+  width: 140px;
+  border-radius: 4px;
   filter: invert(100%);
   transition: transform .3s ease;
 }
@@ -94,7 +98,7 @@ body {
   transform: scale(1.04);
 }
 
-/* menu desktop */
+/* Menu Desktop */
 .menu-topo {
   grid-column: 3;
   justify-self: end;
@@ -110,13 +114,14 @@ body {
   color: var(--text-main);
   text-decoration: none;
   position: relative;
+  padding: 5px 0;
 }
 
 .menu-topo a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: 0;
   width: 0;
   height: 2px;
   background: var(--accent);
@@ -131,11 +136,22 @@ body {
   width: 100%;
 }
 
-/* fundo escuro mobile */
+/* Botão Hamburguer (Escondido no Desktop) */
+.btn-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Fundo escuro para quando menu mobile abrir */
 #fundoEscuro {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.7);
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease;
@@ -147,35 +163,25 @@ body {
   pointer-events: all;
 }
 
-/* botao hamburguer */
-.btn-menu {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: #fff;
-  cursor: pointer;
-}
-
 /* ========================= */
-/* capa                      */
+/* CAPA                      */
 /* ========================= */
 .capa {
   position: relative;
-  overflow: hidden;
+  width: 100%;
   padding: 0;
 }
 
 .foto-capa {
-  margin-top: 80px;
+  margin-top: 75px; /* Compensa a altura da navbar */
   width: 100%;
-  height: 100%;
+  height: 85vh; /* Ocupa boa parte da tela, mas não tudo */
   object-fit: cover;
-  object-position: center 65%;
+  object-position: center top;
 }
 
 /* ========================= */
-/* agenda                    */
+/* AGENDA                    */
 /* ========================= */
 .agenda {
   padding: 80px 20px;
@@ -186,6 +192,7 @@ body {
 .agenda h2 {
   font-size: 42px;
   margin-bottom: 40px;
+  color: var(--accent);
 }
 
 .agenda-wrapper {
@@ -193,6 +200,7 @@ body {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
+  padding: 10px 0; /* Espaço para sombra não cortar */
 }
 
 .agenda-track {
@@ -205,19 +213,28 @@ body {
   min-width: 280px;
   background: #111;
   border: 1px solid #222;
-  padding: 25px;
+  padding: 30px 25px;
   text-align: left;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.agenda-card:hover {
+  border-color: var(--accent);
 }
 
 .agenda-card .data {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  color: #3b85e6;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: block;
 }
 
 .agenda-card h3 {
-  margin: 10px 0 5px;
-  font-size: 20px;
+  margin: 5px 0 10px;
+  font-size: 22px;
+  line-height: 1.3;
 }
 
 .agenda-card p {
@@ -229,27 +246,37 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: rgba(0,0,0,0.6);
   border: none;
-  font-size: 30px;
+  font-size: 24px;
   color: #fff;
   cursor: pointer;
   z-index: 10;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.3s;
 }
 
-.agenda-btn.prev { left: 0; }
-.agenda-btn.next { right: 0; }
+.agenda-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.agenda-btn.prev { left: 10px; }
+.agenda-btn.next { right: 10px; }
 
 /* ========================= */
-/* videos                    */
+/* VIDEOS                    */
 /* ========================= */
 .videos {
   padding: 80px 20px;
   background: var(--bg-soft);
 }
 
-.videos h2{
+.videos h2 {
   text-align: center;
+  font-size: 38px;
+  margin-bottom: 40px;
 }
 
 .area-videos {
@@ -257,16 +284,19 @@ body {
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .area-videos video {
-  width: 320px;
-  border-radius: 14px;
-  border: 1px solid #222;
+  width: 320px; /* Largura base para desktop */
+  border-radius: 8px;
+  border: 1px solid #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* ========================= */
-/* sobre                     */
+/* SOBRE                     */
 /* ========================= */
 .sobre {
   padding: 100px 20px;
@@ -276,21 +306,23 @@ body {
 .sobre-container {
   max-width: 900px;
   margin: auto;
+  text-align: center;
 }
 
 .sobre h2 {
-  text-align: center;
   font-size: 36px;
   margin-bottom: 25px;
+  color: var(--accent);
 }
 
 .sobre p {
   font-size: 18px;
   color: #ccc;
+  line-height: 1.9;
 }
 
 /* ========================= */
-/* contato                   */
+/* CONTATO                   */
 /* ========================= */
 .contato {
   padding: 100px 20px;
@@ -305,13 +337,13 @@ body {
 .contato h2 {
   text-align: center;
   font-size: 36px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .contato-redes {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 50px;
   flex-wrap: wrap;
 }
 
@@ -319,23 +351,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   text-decoration: none;
   color: #fff;
   transition: transform .3s ease;
 }
 
 .contato-item img {
-  width: 95px;
+  width: 80px;
   transition: transform .3s ease;
 }
 
+.contato-item span {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .contato-item:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
 }
 
 .contato-item:hover img {
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .contato-item:active {
@@ -343,52 +381,151 @@ body {
 }
 
 /* ========================= */
-/* rodape                    */
+/* RODAPE                    */
 /* ========================= */
 .rodape {
-  padding: 25px;
+  padding: 30px;
+  background: #050505;
   font-size: 13px;
-  color: #777;
+  color: #555;
   text-align: center;
+  border-top: 1px solid #111;
 }
 
-/* ========================= */
-/* mobile e tablet           */
-/* ========================= */
-@media (max-width: 768px) {
+/* ================================================= */
+/* MEDIA QUERIES (RESPONSIVIDADE)                    */
+/* ================================================= */
 
-  .btn-menu {
-    display: block;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+/* --- TABLETS E MOBILE (< 768px) --- */
+@media (max-width: 768px) {
+  
+  /* Ajuste de Espaçamento Geral */
+  .agenda, .videos, .sobre, .contato {
+    padding: 60px 20px;
   }
 
+  /* Ajuste de Tipografia */
+  .agenda h2, .videos h2, .sobre h2, .contato h2 {
+    font-size: 32px;
+  }
+
+  /* --- NAVBAR MOBILE --- */
+  .area-topo {
+    display: flex; /* Muda de Grid para Flex */
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  /* Logo centralizada ou à direita no mobile */
+  .logo-topo {
+    grid-column: unset; /* Remove grid */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .logo-topo img {
+    width: 120px;
+  }
+
+  /* Botão Hamburguer visível */
+  .btn-menu {
+    display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  /* Menu Lateral (Drawer) */
   .menu-topo {
     position: fixed;
     top: 0;
-    left: -100%;
-    width: 75%;
+    left: -100%; /* Escondido à esquerda */
+    width: 80%;
+    max-width: 320px;
     height: 100vh;
-    background: #0d0d0d;
+    background: #0a0a0a;
+    border-right: 1px solid #222;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    transition: left .3s ease;
-    z-index: 999;
+    transition: left .4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
   }
 
   .menu-topo.ativo {
-    left: 0;
+    left: 0; /* Aparece na tela */
   }
 
   .menu-topo a {
-    font-size: 22px;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
   }
 
+  .menu-topo a:hover {
+    background: #111;
+  }
+
+  /* --- CAPA --- */
   .foto-capa {
-    max-width: 100%;
+    height: 50vh;
+    object-position: center center;
+  }
+
+  /* --- AGENDA (Empilhada no Mobile) --- */
+  .agenda-track {
+    flex-direction: column; /* Cards um embaixo do outro */
+    transform: none !important; /* Desabilita slide JS */
+  }
+  
+  .agenda-card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .agenda-btn {
+    display: none; /* Remove setas no mobile */
+  }
+
+  /* --- VÍDEOS FLUIDOS --- */
+  .area-videos video {
+    width: 100%; /* Ocupa largura total disponível */
+    max-width: 500px;
+  }
+}
+
+/* --- CELULARES PEQUENOS (< 480px) --- */
+@media (max-width: 480px) {
+  
+  .logo-topo img {
+    width: 100px;
+  }
+
+  .agenda h2, .videos h2, .sobre h2, .contato h2 {
+    font-size: 26px;
+  }
+
+  .sobre p {
+    font-size: 16px;
+  }
+
+  .contato-redes {
+    gap: 30px;
+  }
+
+  .contato-item img {
+    width: 60px;
+  }
+  
+  /* Ajuste Whatsapp para não cobrir conteúdo */
+  .whatsapp-fixo img {
+    width: 50px;
+  }
+  .whatsapp-fixo {
+    right: 10px;
+    bottom: 10px;
   }
 }
