@@ -64,11 +64,17 @@ h1, h2, h3 {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0,0,0,0.9); /* Mais escuro para leitura */
-  backdrop-filter: blur(10px);
+  
+  /* MUDANÇA AQUI: De 0.9 para 0.7 */
+  background: rgba(0, 0, 0, 0.7); 
+  
+  /* Aumentei um pouco o desfoque para ficar mais bonito */
+  backdrop-filter: blur(12px); 
+  
   border-bottom: 1px solid rgba(255,255,255,0.1);
   z-index: 1000;
   padding: 10px 0;
+  transition: background 0.3s ease;
 }
 
 .area-topo {
