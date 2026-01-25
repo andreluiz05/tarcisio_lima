@@ -164,25 +164,22 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* CAPA (CORREÇÃO MOBILE)    */
+/* capa                      */
 /* ========================= */
 .capa {
   position: relative;
-  width: 100%;
-  height: 100vh; /* Ocupa a altura total da tela */
-  min-height: 600px; /* Garante tamanho mínimo */
   overflow: hidden;
   padding: 0;
-  background: #000;
 }
 
 .foto-capa {
+  margin-top: 80px;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ESSENCIAL: Corta as laterais mas mantém a altura */
-  object-position: center top; /* Foca no rosto do cantor */
-  opacity: 0.9; /* Leve escurecida para o menu aparecer bem */
+  object-fit: cover;
+  object-position: center 65%;
 }
+
 
 /* ========================= */
 /* AGENDA                    */
