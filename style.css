@@ -57,7 +57,7 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* NAVBAR                    */
+/* NAVBAR (Original)         */
 /* ========================= */
 .barra-topo {
   position: fixed;
@@ -65,18 +65,13 @@ h1, h2, h3 {
   left: 0;
   width: 100%;
   
-  /* MUDANÇA AQUI: De 0.9 para 0.7 */
-  background: rgba(0, 0, 0, 0.7); 
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
   
-  /* Aumentei um pouco o desfoque para ficar mais bonito */
-  backdrop-filter: blur(12px); 
-  
-  border-bottom: 1px solid rgba(255,255,255,0.1);
   z-index: 1000;
-  padding: 10px 0;
-  transition: background 0.3s ease;
+  padding: 10px 0; 
 }
-
 .area-topo {
   max-width: 1200px;
   margin: auto;
