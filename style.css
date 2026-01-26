@@ -452,7 +452,7 @@ h1, h2, h3 {
     height: auto;      /* Respeita a altura da foto de 1080x940 */
     min-height: auto;
     padding-top: 0;    /* Sem espaço extra */
-    margin-top: 70px;
+    margin-top: 80px;
   }
 
   .foto-capa {
