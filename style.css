@@ -453,6 +453,7 @@ h1, h2, h3 {
   }
 
   .foto-capa {
+  margin-bottom: 140px;
   width: 100%;
   height: 420px;        /* 👈 AQUI você estica para baixo */
   object-fit: cover;   /* mantém qualidade e corta só o excesso */
