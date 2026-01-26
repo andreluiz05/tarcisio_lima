@@ -450,7 +450,7 @@ h1, h2, h3 {
     min-height: auto;   
     
     /* Padding para a foto começar DEPOIS da navbar (que tem ~60px) */
-    padding-top: 50px;  
+    padding-top: 30px;  
     
     background: #000; /* Fundo preto para continuidade */
     display: block;
