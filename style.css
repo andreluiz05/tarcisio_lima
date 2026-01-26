@@ -465,7 +465,7 @@ h1, h2, h3 {
     
     /* O SEGREDO: Foca no CENTRO e no TOPO da imagem. 
        Vai cortar as pontinhas laterais, mas mantem o cantor e o texto principal */
-    object-position: center 20%; 
+    object-position: center 40%; 
     
     display: block;
     margin-top: 0;
