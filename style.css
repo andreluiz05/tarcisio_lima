@@ -179,20 +179,23 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* capa                      */
+/* CAPA (Geral)              */
 /* ========================= */
 .capa {
   position: relative;
-  overflow: hidden;
+  width: 100%;
   padding: 0;
+  background: #000;
+  display: block;
+  /* Se a navbar for transparente e você quiser que a foto fique atrás dela: */
+  margin-top: 0; 
 }
 
 .foto-capa {
-  margin-top: 80px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 65%;
+  height: auto;        /* A altura será automática baseada na imagem */
+  object-fit: cover; 
+  display: block;      /* Remove linhas brancas indesejadas */
 }
 
 
@@ -442,29 +445,19 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-/* Banner responsivo  */
-  
+/* ========================= */
+  /* CAPA MOBILE (Ajuste Final)*/
+  /* ========================= */
   .capa {
-    /* Altura automática: O tamanho da seção será definido pelo tamanho da foto */
-    height: auto;       
-    min-height: auto;   
-    
-    /* Padding para a foto começar DEPOIS da navbar (que tem ~60px) */
-    padding-top: 40px;  
-    
-    background: #000; /* Fundo preto para continuidade */
-    display: block;
+    height: auto;      /* Respeita a altura da foto de 1080x940 */
+    min-height: auto;
+    padding-top: 0;    /* Sem espaço extra */
     margin-top: 0;
   }
 
   .foto-capa {
-    width: 100%;          /* Ocupa a largura toda do celular */
-    height: auto;         /* A altura se ajusta sozinha para não distorcer */
-    
-    /* 'contain' garante que a foto apareça 100% inteira (igual no desktop) */
-    object-fit: contain;  
-    
-    display: block;       /* Remove espaços extras */
+    width: 100%;
+    height: auto;      /* Mantém a proporção original da foto quadrada */
   }
   
   /* Ajustes de Texto Mobile */
