@@ -459,7 +459,7 @@ h1, h2, h3 {
   /* AQUI ESTÁ O SEGREDO: */
   /* Força o container a ter o formato da foto (retângulo deitado) */
   /* Assim a foto nunca corta, mas ocupa a largura total */
-  aspect-ratio: 16 / 9; 
+  aspect-ratio: 18 / 9; 
   margin-top: 60px; /* Empurra para baixo da barra transparente */
 }
 
