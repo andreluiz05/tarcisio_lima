@@ -442,37 +442,32 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-  /* =================================================== */
-/* SOLUÇÃO DEFINITIVA: ARTE COMPLETA NO MOBILE         */
 /* =================================================== */
+  /* MODELO ZÉ NETO & CRISTIANO (Banner Responsivo)      */
+  /* =================================================== */
   
-.capa {
-  /* Removemos alturas fixas que forçam o corte */
-  height: auto;
-  min-height: auto;
-  
-  /* Mantemos um pequeno padding se necessário, mas o foco é a imagem */
-  padding-top: 0;
-  background: #000;
-  position: relative;
-  
-  /* AQUI ESTÁ O SEGREDO: */
-  /* Força o container a ter o formato da foto (retângulo deitado) */
-  /* Assim a foto nunca corta, mas ocupa a largura total */
-  aspect-ratio: 4 / 3; 
-  margin-top: 60px; /* Empurra para baixo da barra transparente */
-}
+  .capa {
+    /* Altura automática: O tamanho da seção será definido pelo tamanho da foto */
+    height: auto;       
+    min-height: auto;   
+    
+    /* Padding para a foto começar DEPOIS da navbar (que tem ~60px) */
+    padding-top: 70px;  
+    
+    background: #000; /* Fundo preto para continuidade */
+    display: block;
+    margin-top: 0;
+  }
 
-.foto-capa {
-  width: 100%;
-  height: 100%;
-  
-  /* Garante que a imagem preencha esse retângulo perfeito */
-  object-fit: cover; 
-  object-position: center top;
-  
-  display: block;
-}
+  .foto-capa {
+    width: 100%;          /* Ocupa a largura toda do celular */
+    height: auto;         /* A altura se ajusta sozinha para não distorcer */
+    
+    /* 'contain' garante que a foto apareça 100% inteira (igual no desktop) */
+    object-fit: contain;  
+    
+    display: block;       /* Remove espaços extras */
+  }
   
   /* Ajustes de Texto Mobile */
   .agenda h2, .sobre h2, .contato h2, .videos h2 {
