@@ -456,18 +456,17 @@ h1, h2, h3 {
   }
 
 /* ========================= */
-  /* CAPA MOBILE (Ajuste Final)*/
+  /* CAPA MOBILE (AJUSTE FINAL)*/
   /* ========================= */
-  .capa {
-    height: auto;      /* Respeita a altura da foto de 1080x940 */
-    min-height: auto;
-    padding-top: 0;    /* Sem espaço extra */
-    margin-top: 80px;
-  }
 
-.capa {
+  .capa {
     position: relative;
     overflow: hidden;
+
+    height: auto;
+    min-height: auto;
+    padding-top: 0;
+    margin-top: 80px;
   }
 
   .capa::after {
@@ -490,11 +489,13 @@ h1, h2, h3 {
   }
 
   .foto-capa {
-  margin-bottom: 140px;
-  width: 100%;
-  height: 420px;        /* 👈 AQUI você estica para baixo */
-  object-fit: cover;   /* mantém qualidade e corta só o excesso */
-  object-position: center;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 140px;
+  }
+
 }
 
   /* Vídeos ocupam largura total no celular */
