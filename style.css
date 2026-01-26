@@ -458,8 +458,6 @@ h1, h2, h3 {
   .foto-capa {
     width: 100%;
     height: auto;      /* Mantém a proporção original da foto quadrada */
-    transform: scale(1.15);
-    display: block;
   }
   
   /* Ajustes de Texto Mobile */
