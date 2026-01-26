@@ -196,7 +196,7 @@ h1, h2, h3 {
   height: auto;        /* A altura será automática baseada na imagem */
   object-fit: cover; 
   display: block;      /* Remove linhas brancas indesejadas */
-  border: 1px solid #ffc107;
+  border: 1px solid #4682B4;
 }
 
 
@@ -457,7 +457,7 @@ h1, h2, h3 {
   }
 
   .foto-capa {
-    border: 1px solid #ffc107;
+    border: 1px solid #4682B4;
     width: 100%;
     height: auto;      /* Mantém a proporção original da foto quadrada */
   }
