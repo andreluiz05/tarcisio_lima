@@ -188,7 +188,7 @@ h1, h2, h3 {
   background: #000;
   display: block;
   /* Se a navbar for transparente e você quiser que a foto fique atrás dela: */
-  margin-top: 0; 
+  margin-top: 80px; 
 }
 
 .foto-capa {
@@ -452,7 +452,7 @@ h1, h2, h3 {
     height: auto;      /* Respeita a altura da foto de 1080x940 */
     min-height: auto;
     padding-top: 0;    /* Sem espaço extra */
-    margin-top: 0;
+    margin-top: 70px;
   }
 
   .foto-capa {
