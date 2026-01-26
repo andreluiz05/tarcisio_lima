@@ -442,9 +442,7 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-/* =================================================== */
-  /* MODELO ZÉ NETO & CRISTIANO (Banner Responsivo)      */
-  /* =================================================== */
+/* Banner responsivo  */
   
   .capa {
     /* Altura automática: O tamanho da seção será definido pelo tamanho da foto */
@@ -452,7 +450,7 @@ h1, h2, h3 {
     min-height: auto;   
     
     /* Padding para a foto começar DEPOIS da navbar (que tem ~60px) */
-    padding-top: 70px;  
+    padding-top: 50px;  
     
     background: #000; /* Fundo preto para continuidade */
     display: block;
