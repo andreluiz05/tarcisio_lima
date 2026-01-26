@@ -450,7 +450,7 @@ h1, h2, h3 {
     /* Define uma altura boa para o celular (85% da tela), 
        não é tela cheia (100vh) para o usuário ver que tem mais site embaixo */
     height: 50vh;       
-    min-height: 550px;  /* Garante um tamanho mínimo bom */
+    min-height: 400px;  /* Garante um tamanho mínimo bom */
     padding-top: 0;     /* Remove o padding, a imagem vai para baixo da nav transparente */
     background: #000;
     position: relative;
