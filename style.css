@@ -453,7 +453,7 @@ h1, h2, h3 {
   }
 
   .foto-capa {
-    width: 100%;
+    max-width: 100%;
     height: auto;      /* Mantém a proporção original da foto quadrada */
   }
   
