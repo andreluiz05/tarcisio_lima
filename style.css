@@ -442,35 +442,38 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-/* =================================================== */
-  /* SOLUÇÃO HÍBRIDA: GRANDE, MAS CENTRALIZADA (MOBILE)  */
   /* =================================================== */
+/* SOLUÇÃO DEFINITIVA: ARTE COMPLETA NO MOBILE         */
+/* =================================================== */
   
-  .capa {
-    /* Define uma altura boa para o celular (85% da tela), 
-       não é tela cheia (100vh) para o usuário ver que tem mais site embaixo */
-    height: 50vh;       
-    min-height: 400px;  /* Garante um tamanho mínimo bom */
-    padding-top: 0;     /* Remove o padding, a imagem vai para baixo da nav transparente */
-    background: #000;
-    position: relative;
-  }
+.capa {
+  /* Removemos alturas fixas que forçam o corte */
+  height: auto;
+  min-height: auto;
+  
+  /* Mantemos um pequeno padding se necessário, mas o foco é a imagem */
+  padding-top: 0;
+  background: #000;
+  position: relative;
+  
+  /* AQUI ESTÁ O SEGREDO: */
+  /* Força o container a ter o formato da foto (retângulo deitado) */
+  /* Assim a foto nunca corta, mas ocupa a largura total */
+  aspect-ratio: 16 / 9; 
+  margin-top: 60px; /* Empurra para baixo da barra transparente */
+}
 
-  .foto-capa {
-    width: 100%;
-    height: 100%;        /* Preenche a altura de 85vh definida acima */
-    
-    /* 'cover' faz ela ficar GRANDE e preencher tudo */
-    object-fit: cover;   
-    
-    /* O SEGREDO: Foca no CENTRO e no TOPO da imagem. 
-       Vai cortar as pontinhas laterais, mas mantem o cantor e o texto principal */
-    object-position: center 40%; 
-    
-    display: block;
-    margin-top: 0;
-    opacity: 0.85; /* Leve transparência para o menu ficar bem legível em cima */
-  }
+.foto-capa {
+  width: 100%;
+  height: 100%;
+  
+  /* Garante que a imagem preencha esse retângulo perfeito */
+  object-fit: cover; 
+  object-position: center top;
+  
+  display: block;
+}
+  
   /* Ajustes de Texto Mobile */
   .agenda h2, .sobre h2, .contato h2, .videos h2 {
     font-size: 2.2rem;
