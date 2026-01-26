@@ -453,15 +453,11 @@ h1, h2, h3 {
   }
 
   .foto-capa {
-    max-width: 100%;
-    max-height: auto
-    height: auto;      /* Mantém a proporção original da foto quadrada */
-  }
-  
-  /* Ajustes de Texto Mobile */
-  .agenda h2, .sobre h2, .contato h2, .videos h2 {
-    font-size: 2.2rem;
-  }
+  width: 100%;
+  height: 420px;        /* 👈 AQUI você estica para baixo */
+  object-fit: cover;   /* mantém qualidade e corta só o excesso */
+  object-position: center;
+}
 
   /* Vídeos ocupam largura total no celular */
   .area-videos video {
