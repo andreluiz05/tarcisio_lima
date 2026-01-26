@@ -1,12 +1,12 @@
 /* ========================= */
-/* RESET & VARIÁVEIS         */
+/* reset & variaveis         */
 /* ========================= */
 :root {
-  --bg-main: #050505;     /* Preto Profundo */
-  --bg-card: #121212;     /* Cinza Chumbo */
+  --bg-main: #050505;     /* preto profundo */
+  --bg-card: #121212;     /* cinza chumbo */
   --text-main: #ffffff;
   --text-soft: #b0b0b0;
-  --accent: #e6d37a;      /* Dourado Premium */
+  --accent: #e6d37a;      /* dourado premium */
   --shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
@@ -25,25 +25,23 @@ body {
   background: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden; /* Evita rolagem lateral no mobile */
+  overflow-x: hidden; /* evita rolagem lateral no mobile */
 }
 
-/* Títulos Elegantes (Playfair Display) - MUDANÇA IMPORTANTE */
+/* titulos elegantes (playfair display) - mudanca importante */
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif; /* Fonte de Artista */
+  font-family: 'Playfair Display', serif; /* fonte de artista */
   font-weight: 700;
   color: var(--text-main);
 }
 
-/*whatsapp flutuante  */
+/* whatsapp flutuante */
 .whatsapp-fixo {
   position: fixed;
   bottom: 5px;
   right: 10px;
   z-index: 999;
-
 }
-
 
 .whatsapp-fixo img {
   width: 110px;
@@ -62,7 +60,7 @@ h1, h2, h3 {
 
 
 /* ========================= */
-/* NAVBAR (Original)         */
+/* navbar (original)         */
 /* ========================= */
 .barra-topo {
   position: fixed;
@@ -87,14 +85,14 @@ h1, h2, h3 {
   height: 60px;
 }
 
-/* Logo */
+/* logo */
 .logo-topo {
   grid-column: 2;
   justify-self: center;
 }
 
 .logo-topo img {
-  height: 45px; /* Altura fixa evita distorção */
+  height: 45px; /* altura fixa evita distorcao */
   width: auto;
   transition: transform .3s ease;
 }
@@ -103,7 +101,7 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
-/* Menu Desktop */
+/* menu desktop */
 .menu-topo {
   grid-column: 3;
   justify-self: end;
@@ -141,18 +139,18 @@ h1, h2, h3 {
   width: 100%;
 }
 
-/* Botão Hamburguer */
+/* botao hamburguer */
 .btn-menu {
-  display: none; /* Invisível no PC */
+  display: none; /* invisivel no pc */
   background: none;
   border: none;
   font-size: 28px;
-  color: var(--accent); /* Cor dourada */
+  color: var(--accent); /* cor dourada */
   cursor: pointer;
   z-index: 1002;
 }
 
-/* Fundo Escuro Mobile */
+/* fundo escuro mobile */
 #fundoEscuro {
   position: fixed;
   inset: 0;
@@ -169,7 +167,7 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* CAPA (Geral)              */
+/* capa (geral)              */
 /* ========================= */
 .capa {
   position: relative;
@@ -178,7 +176,7 @@ h1, h2, h3 {
   background: #000;
   display: block;
   overflow: hidden;
-  /* Se a navbar for transparente e você quiser que a foto fique atrás dela: */
+  /* se a navbar for transparente e voce quiser que a foto fique atras dela: */
   margin-top: 80px; 
 }
 
@@ -203,14 +201,14 @@ h1, h2, h3 {
 
 .foto-capa {
   width: 100%;
-  height: auto;        /* A altura será automática baseada na imagem */
+  height: auto;        /* a altura sera automatica baseada na imagem */
   object-fit: cover; 
-  display: block;      /* Remove linhas brancas indesejadas */
+  display: block;      /* remove linhas brancas indesejadas */
 }
 
 
 /* ========================= */
-/* AGENDA                    */
+/* agenda                    */
 /* ========================= */
 .agenda {
   padding: 80px 20px;
@@ -219,7 +217,7 @@ h1, h2, h3 {
 }
 
 .agenda h2 {
-  font-size: 3rem; /* Fonte maior e mais fina */
+  font-size: 3rem; /* fonte maior e mais fina */
   margin-bottom: 50px;
   color: #fff;
 }
@@ -242,7 +240,7 @@ h1, h2, h3 {
   min-width: 280px;
   background: var(--bg-card);
   border: 1px solid #222;
-  border-top: 3px solid var(--accent); /* Detalhe dourado no topo */
+  border-top: 3px solid var(--accent); /* detalhe dourado no topo */
   padding: 30px;
   text-align: left;
   border-radius: 8px;
@@ -253,7 +251,7 @@ h1, h2, h3 {
   display: block;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--accent); /* Dourado (Antes era Azul) */
+  color: var(--accent); /* dourado (antes era azul) */
   margin-bottom: 8px;
   font-family: 'Inter', sans-serif;
   letter-spacing: 1px;
@@ -270,7 +268,7 @@ h1, h2, h3 {
   color: var(--text-soft);
 }
 
-/* Botões da Agenda */
+/* botoes da agenda */
 .agenda-btn {
   position: absolute;
   top: 50%;
@@ -280,7 +278,7 @@ h1, h2, h3 {
   color: #fff;
   width: 45px;
   height: 45px;
-  border-radius: 50%; /* Redondo */
+  border-radius: 50%; /* redondo */
   font-size: 20px;
   cursor: pointer;
   z-index: 10;
@@ -295,7 +293,7 @@ h1, h2, h3 {
 .agenda-btn.next { right: 0; }
 
 /* ========================= */
-/* VÍDEOS                    */
+/* videos                    */
 /* ========================= */
 .videos {
   padding: 80px 20px;
@@ -316,8 +314,8 @@ h1, h2, h3 {
 }
 
 .area-videos video {
-  width: 300px; /* Tamanho base */
-  height: 530px; /* Formato Reels/TikTok */
+  width: 300px; /* tamanho base */
+  height: 530px; /* formato reels/tiktok */
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid #222;
@@ -325,7 +323,7 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* SOBRE                     */
+/* sobre                     */
 /* ========================= */
 .sobre {
   padding: 100px 20px;
@@ -352,7 +350,7 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* CONTATO                   */
+/* contato                   */
 /* ========================= */
 .contato {
   padding: 80px 20px;
@@ -404,7 +402,7 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* RODAPÉ                    */
+/* rodape                    */
 /* ========================= */
 .rodape {
   padding: 30px;
@@ -416,18 +414,18 @@ h1, h2, h3 {
 }
 
 /* ========================= */
-/* MOBILE / TABLET (AJUSTES) */
+/* mobile / tablet (ajustes) */
 /* ========================= */
 @media (max-width: 768px) {
 
-  /* Ajuste do Botão Menu */
+  /* ajuste do botao menu */
   .btn-menu {
     display: block;
     grid-column: 1;
     justify-self: start;
   }
 
-  /* Ajuste do Menu Lateral */
+  /* ajuste do menu lateral */
   .menu-topo {
     position: fixed;
     top: 0;
@@ -456,55 +454,56 @@ h1, h2, h3 {
   }
 
 /* ========================= */
-  /* CAPA MOBILE (Ajuste Final)*/
+  /* capa mobile (ajuste final)*/
   /* ========================= */
   .capa {
-    height: auto;      /* Respeita a altura da foto de 1080x940 */
+    height: auto;      /* respeita a altura da foto de 1080x940 */
     min-height: auto;
-    padding-top: 0;    /* Sem espaço extra */
+    padding-top: 0;    /* sem espaco extra */
     margin-top: 80px;
   }
 
-.capa {
+  .capa {
     position: relative;
     overflow: hidden;
   }
 
+  /* dentro do @media (max-width: 768px) */
   .capa::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0; /* agora que tiramos a margem, o bottom 0 e logo acima da foto */
     width: 100%;
-    height: 55%;
-
+    height: 55%; 
+    z-index: 2; /* garante que o degrade fique sobre a foto */
+    
     background: linear-gradient(
       to bottom,
       rgba(0,0,0,0) 0%,
       rgba(0,0,0,0.25) 40%,
       rgba(0,0,0,0.6) 70%,
-      rgba(0,0,0,0.95) 100%
+      rgba(0,0,0,1) 100% /* mudei o final para 1 (preto total) para sumir a linha de corte */
     );
-
     pointer-events: none;
   }
 
   .foto-capa {
-  margin-bottom: 140px;
-  width: 100%;
-  height: 420px;        /* 👈 AQUI você estica para baixo */
-  object-fit: cover;   /* mantém qualidade e corta só o excesso */
-  object-position: center;
-}
+    margin-bottom: 0;
+    width: 100%;
+    height: 420px;        
+    object-fit: cover;   
+    object-position: top center;
+  }
 
-  /* Vídeos ocupam largura total no celular */
+  /* videos ocupam largura total no celular */
   .area-videos video {
     width: 100%; 
     height: auto;
-    aspect-ratio: 9/16; /* Mantém formato vertical */
+    aspect-ratio: 9/16; /* mantem formato vertical */
   }
   
-  /* Ajuste Redes Sociais */
+  /* ajuste redes sociais */
   .contato-redes {
     gap: 30px;
   }
