@@ -80,8 +80,13 @@
   
   <main>
     <section class="capa" id="inicio">
-      <img src="imagens/capa00.jpg" alt="Foto do cantor Tarcísio Lima" class="foto-capa">
-    </section> <br>
+      <picture>
+        <source media="(max-width: 768px)" srcset="imagens/capa-mobile.png">
+        
+        <img src="imagens/capa-desktop.png" alt="Foto do cantor Tarcísio Lima" class="foto-capa">
+      </picture>
+    </section>
+     <br>
     <section class="agenda" id="agenda">
       <h2>Agenda de Shows</h2>
 
@@ -258,6 +263,7 @@
 
 </body>
 </html>
+
 
 
 
