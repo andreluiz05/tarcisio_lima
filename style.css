@@ -442,21 +442,35 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-.capa {
-    height: auto;        /* Deixa a altura livre para não cortar a foto */
-    min-height: auto;    /* Remove altura mínima forçada */
-    padding-top: 70px;   /* Empurra para baixo para o menu não cobrir a testa */
+/* =================================================== */
+  /* SOLUÇÃO HÍBRIDA: GRANDE, MAS CENTRALIZADA (MOBILE)  */
+  /* =================================================== */
+  
+  .capa {
+    /* Define uma altura boa para o celular (85% da tela), 
+       não é tela cheia (100vh) para o usuário ver que tem mais site embaixo */
+    height: 85vh;       
+    min-height: 550px;  /* Garante um tamanho mínimo bom */
+    padding-top: 0;     /* Remove o padding, a imagem vai para baixo da nav transparente */
     background: #000;
+    position: relative;
   }
 
   .foto-capa {
     width: 100%;
-    height: auto;        /* Mantém a proporção original */
-    object-fit: contain; /* O SEGREDO: garante que a imagem caiba inteira */
+    height: 100%;        /* Preenche a altura de 85vh definida acima */
+    
+    /* 'cover' faz ela ficar GRANDE e preencher tudo */
+    object-fit: cover;   
+    
+    /* O SEGREDO: Foca no CENTRO e no TOPO da imagem. 
+       Vai cortar as pontinhas laterais, mas mantem o cantor e o texto principal */
+    object-position: center 20%; 
+    
     display: block;
     margin-top: 0;
+    opacity: 0.85; /* Leve transparência para o menu ficar bem legível em cima */
   }
-  
   /* Ajustes de Texto Mobile */
   .agenda h2, .sobre h2, .contato h2, .videos h2 {
     font-size: 2.2rem;
