@@ -442,14 +442,21 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
 
-  /* CORREÇÃO FOTO CAPA MOBILE */
-  .capa {
-    height: 100vh; /* Força altura total no celular */
-  }
-  .foto-capa {
-    object-position: center top; /* Garante que o rosto apareça */
+.capa {
+    height: auto;        /* Deixa a altura livre para não cortar a foto */
+    min-height: auto;    /* Remove altura mínima forçada */
+    padding-top: 70px;   /* Empurra para baixo para o menu não cobrir a testa */
+    background: #000;
   }
 
+  .foto-capa {
+    width: 100%;
+    height: auto;        /* Mantém a proporção original */
+    object-fit: contain; /* O SEGREDO: garante que a imagem caiba inteira */
+    display: block;
+    margin-top: 0;
+  }
+  
   /* Ajustes de Texto Mobile */
   .agenda h2, .sobre h2, .contato h2, .videos h2 {
     font-size: 2.2rem;
