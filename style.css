@@ -37,17 +37,12 @@ h1, h2, h3 {
 
 /*whatsapp flutuante  */
 .whatsapp-fixo {
-
   position: fixed;
-
   bottom: 5px;
-
   right: 10px;
-
   z-index: 999;
 
 }
-
 
 
 .whatsapp-fixo img {
@@ -56,14 +51,12 @@ h1, h2, h3 {
   transition: transform .3s ease, filter .3s ease;
 }
 
-
 .whatsapp-fixo img:hover {
   transform: scale(1.08);
   filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
 }
 
 .whatsapp-fixo img:active {
-
   transform: scale(.95);
 }
 
@@ -184,8 +177,28 @@ h1, h2, h3 {
   padding: 0;
   background: #000;
   display: block;
+  overflow: hidden;
   /* Se a navbar for transparente e você quiser que a foto fique atrás dela: */
   margin-top: 80px; 
+}
+
+.capa::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 45%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+
+  pointer-events: none;
 }
 
 .foto-capa {
