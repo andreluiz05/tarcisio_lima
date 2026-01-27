@@ -86,7 +86,6 @@
         <img src="imagens/capa-desktop.jpg" alt="Foto do cantor Tarcísio Lima" class="foto-capa">
       </picture>
     </section>
-     <br>
     <section class="agenda" id="agenda">
       <h2>Agenda de Shows</h2>
 
@@ -259,18 +258,33 @@
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
+// =========================
+    // ANIMAÇÃO AO SCROLL (MODO INVISÍVEL TOTAL)
+    // =========================
+    const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
+
+    elementosParaAnimar.forEach(el => {
+        el.classList.add('js-scroll');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('ativo');
+                }, 100); 
+                
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, 
+        rootMargin: "0px 0px -170px 0px"
+    });
+
+    elementosParaAnimar.forEach((el) => observer.observe(el));
+   
   </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
