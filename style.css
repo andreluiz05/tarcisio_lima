@@ -22,9 +22,8 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent); /* fica dourado ao passar o mouse */
+  background: var(--accent); 
 }
-
 /* cor da selecao de texto */
 ::selection {
   background: var(--accent);
@@ -257,7 +256,7 @@ h1, h2, h3 {
 /* agenda                    */
 /* ========================= */
 .agenda {
-  padding: 80px 20px;
+  padding: 90px 20px;
   background: var(--bg-main);
   text-align: center;
 }
@@ -356,10 +355,12 @@ h1, h2, h3 {
 .agenda-btn.next { right: 0; }
 
 /* ========================= */
-/* videos                    */
+/* VIDEOS                    */
 /* ========================= */
+
 .videos {
-  padding: 100px 20px;
+  /* Aumentei o topo para 150px para separar bem da agenda */
+  padding: 100px 20px 100px 20px; 
   background: #0a0a0a;
 }
 
@@ -387,7 +388,7 @@ h1, h2, h3 {
 }
 
 .area-videos video:hover {
-  transform: scale(1.02); /* zoom suave no video */
+  transform: scale(1.02); 
   box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   border-color: #333;
 }
@@ -455,7 +456,7 @@ h1, h2, h3 {
 }
 
 .contato-item:hover {
-  background: rgba(255,255,255,0.03); /* feedback visual leve ao passar o mouse */
+  background: rgba(255,255,255,0.03); 
   transform: translateY(-10px);
 }
 
@@ -528,7 +529,7 @@ h1, h2, h3 {
   }
 
   .menu-topo.ativo {
-    transform: translateX(0); /* entra na tela */
+    transform: translateX(0); 
   }
 
   .menu-topo a {
@@ -541,12 +542,12 @@ h1, h2, h3 {
   /* capa mobile (ajuste final)*/
   /* ========================= */
   .capa {
-    height: auto;      /* respeita a altura da foto */
+    height: auto;     
     min-height: auto;
-    padding-top: 0;    /* sem espaco extra */
+    padding-top: 0;    
     margin-top: 80px;
     padding-bottom: 50px;
-    display: block;    /* remove flexbox no mobile */
+    display: block;    
   }
 
   /* dentro do @media (max-width: 768px) */
@@ -556,7 +557,7 @@ h1, h2, h3 {
     left: 0;
     bottom: 0; 
     width: 100%;
-    height: 60%; /* degrade mais alto para mobile */
+    height: 60%; 
     z-index: 2; 
     
     background: linear-gradient(
@@ -587,12 +588,12 @@ h1, h2, h3 {
   /* ajuste redes sociais */
   .contato-redes {
     gap: 30px;
-    flex-direction: column; /* empilha no mobile para facilitar o clique */
+    flex-direction: column;
   }
   
   .contato-item {
       width: 100%;
-      background: rgba(255,255,255,0.05); /* fundo leve no mobile */
+      background: rgba(255,255,255,0.05); 
   }
 }
 
@@ -603,10 +604,10 @@ h1, h2, h3 {
 /* estado inicial */
 .js-scroll {
   opacity: 0;
-  transform: translateY(40px); /* aumentei um pouco a distancia */
+  transform: translateY(40px); 
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   filter: blur(4px); 
-  will-change: opacity, transform; /* avisa o navegador para preparar a animacao */
+  will-change: opacity, transform; 
 }
 
 /* estado final */
