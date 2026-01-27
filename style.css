@@ -10,6 +10,27 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+/* personalizacao da barra de rolagem (scroll) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); /* fica dourado ao passar o mouse */
+}
+
+/* cor da selecao de texto */
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,16 +47,17 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden; /* evita rolagem lateral no mobile */
+  -webkit-font-smoothing: antialiased; /* deixa a fonte mais nitida no fundo preto */
 }
 
-/* titulos elegantes (playfair display) - mudanca importante */
+/* titulos elegantes (playfair display) */
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif; /* fonte de artista */
+  font-family: 'Playfair Display', serif; 
   font-weight: 700;
   color: var(--text-main);
 }
 
-/* whatsapp flutuante */
+/* whatsapp flutuante (restaurado tamanho grande) */
 .whatsapp-fixo {
   position: fixed;
   bottom: 5px;
@@ -44,9 +66,10 @@ h1, h2, h3 {
 }
 
 .whatsapp-fixo img {
-  width: 110px;
+  width: 110px; /* tamanho grande original */
   cursor: pointer;
   transition: transform .3s ease, filter .3s ease;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
 }
 
 .whatsapp-fixo img:hover {
@@ -68,13 +91,15 @@ h1, h2, h3 {
   left: 0;
   width: 100%;
   
-  background: rgba(0,0,0,.75);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(5, 5, 5, 0.85); /* um pouco mais escuro para contraste */
+  backdrop-filter: blur(12px);     /* blur mais forte estilo apple */
+  border-bottom: 1px solid rgba(255,255,255,.05);
   
   z-index: 1000;
   padding: 10px 0; 
+  transition: background 0.3s ease;
 }
+
 .area-topo {
   max-width: 1200px;
   margin: auto;
@@ -92,9 +117,10 @@ h1, h2, h3 {
 }
 
 .logo-topo img {
-  height: 45px; /* altura fixa evita distorcao */
+  height: 45px; 
   width: auto;
   transition: transform .3s ease;
+  display: block;
 }
 
 .logo-topo img:hover {
@@ -110,14 +136,15 @@ h1, h2, h3 {
 }
 
 .menu-topo a {
-  font-size: 14px;
+  font-size: 13px; /* levemente menor para mais elegancia */
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-main);
   text-decoration: none;
   position: relative;
   transition: color 0.3s;
+  padding: 5px 0;
 }
 
 .menu-topo a:hover {
@@ -128,9 +155,9 @@ h1, h2, h3 {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: 0;
   width: 0;
-  height: 2px;
+  height: 1px; /* linha mais fina */
   background: var(--accent);
   transition: width .3s ease;
 }
@@ -141,23 +168,25 @@ h1, h2, h3 {
 
 /* botao hamburguer */
 .btn-menu {
-  display: none; /* invisivel no pc */
+  display: none; 
   background: none;
   border: none;
   font-size: 28px;
-  color: var(--accent); /* cor dourada */
+  color: var(--accent); 
   cursor: pointer;
   z-index: 1002;
+  padding: 5px; /* area de toque maior */
 }
 
 /* fundo escuro mobile */
 #fundoEscuro {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease;
+  transition: opacity .4s ease;
   z-index: 998;
 }
 
@@ -174,10 +203,15 @@ h1, h2, h3 {
   width: 100%;
   padding: 0;
   background: #000;
-  display: block;
+  
+  display: block;        /* removi o flex que baixava a foto */
   overflow: hidden;
-  /* se a navbar for transparente e voce quiser que a foto fique atras dela: */
-  margin-top: 80px; 
+  
+  margin-top: 80px;      /* espaco exato da navbar */
+  margin-bottom: 100px;  /* espaco embaixo para empurrar a agenda */
+  
+  /* garante que o container tenha altura, mas a foto fica no topo */
+  min-height: calc(100vh - 80px); 
 }
 
 .capa::after {
@@ -186,14 +220,16 @@ h1, h2, h3 {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 35%;
+  height: 50%; /* aumentei a altura do degrade */
+  z-index: 2;  /* garante que fique por cima da foto */
 
+  /* degrade mais forte para ser visivel */
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.25) 40%,
-    rgba(0, 0, 0, 0.6) 70%,
-    rgba(0, 0, 0, 0.95) 100%
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.9) 80%,
+    #050505 100%
   );
 
   pointer-events: none;
@@ -201,9 +237,10 @@ h1, h2, h3 {
 
 .foto-capa {
   width: 100%;
-  height: auto;        /* a altura sera automatica baseada na imagem */
+  height: auto;       
   object-fit: cover; 
-  display: block;      /* remove linhas brancas indesejadas */
+  display: block;     
+  object-position: top center; /* garante que a foto comece do topo */
 }
 
 
@@ -217,9 +254,10 @@ h1, h2, h3 {
 }
 
 .agenda h2 {
-  font-size: 3rem; /* fonte maior e mais fina */
+  font-size: 3rem; 
   margin-bottom: 50px;
   color: #fff;
+  letter-spacing: -1px; /* deixa o titulo mais compacto e moderno */
 }
 
 .agenda-wrapper {
@@ -227,38 +265,50 @@ h1, h2, h3 {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 20px 0; /* espaco extra para a sombra e hover */
 }
 
 .agenda-track {
   display: flex;
   gap: 20px;
   transition: transform .5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: grab; /* indica que pode arrastar */
+}
+
+.agenda-track:active {
+  cursor: grabbing;
 }
 
 .agenda-card {
   min-width: 280px;
   background: var(--bg-card);
   border: 1px solid #222;
-  border-top: 3px solid var(--accent); /* detalhe dourado no topo */
+  border-top: 3px solid var(--accent); 
   padding: 30px;
   text-align: left;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* efeito hover no card da agenda */
+.agenda-card:hover {
+  transform: translateY(-5px); /* sobe levemente */
+  border-color: var(--accent); /* borda inteira fica dourada */
 }
 
 .agenda-card .data {
   display: block;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--accent); /* dourado (antes era azul) */
+  color: var(--accent); 
   margin-bottom: 8px;
   font-family: 'Inter', sans-serif;
   letter-spacing: 1px;
 }
 
 .agenda-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-bottom: 5px;
   color: #fff;
 }
@@ -273,21 +323,25 @@ h1, h2, h3 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   border: 1px solid #333;
   color: #fff;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%; /* redondo */
-  font-size: 20px;
+  width: 50px; /* botoes um pouco maiores */
+  height: 50px;
+  border-radius: 50%; 
+  font-size: 22px;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .agenda-btn:hover {
   background: var(--accent);
   color: #000;
   border-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
 }
 .agenda-btn.prev { left: 0; }
 .agenda-btn.next { right: 0; }
@@ -296,39 +350,46 @@ h1, h2, h3 {
 /* videos                    */
 /* ========================= */
 .videos {
-  padding: 80px 20px;
+  padding: 100px 20px;
   background: #0a0a0a;
 }
 
 .videos h2 {
   text-align: center;
   font-size: 3rem;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .area-videos {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .area-videos video {
-  width: 300px; /* tamanho base */
-  height: 530px; /* formato reels/tiktok */
+  width: 300px; 
+  height: 530px; 
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid #222;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.area-videos video:hover {
+  transform: scale(1.02); /* zoom suave no video */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: #333;
 }
 
 /* ========================= */
 /* sobre                     */
 /* ========================= */
 .sobre {
-  padding: 100px 20px;
+  padding: 120px 20px;
   background: var(--bg-main);
-  background-image: radial-gradient(circle at center, #151515 0%, #000 70%);
+  background-image: radial-gradient(circle at center, #151515 0%, #050505 70%);
 }
 
 .sobre-container {
@@ -344,16 +405,17 @@ h1, h2, h3 {
 }
 
 .sobre p {
-  font-size: 1.2rem;
-  color: #ddd;
-  line-height: 1.9;
+  font-size: 1.25rem;
+  color: #d1d1d1;
+  line-height: 2;
+  font-weight: 300;
 }
 
 /* ========================= */
 /* contato                   */
 /* ========================= */
 .contato {
-  padding: 80px 20px;
+  padding: 100px 20px;
   background: #000;
   border-top: 1px solid #111;
 }
@@ -361,13 +423,13 @@ h1, h2, h3 {
 .contato h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .contato-redes {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
@@ -375,14 +437,21 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
   text-decoration: none;
   color: #fff;
   transition: transform 0.3s ease;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.contato-item:hover {
+  background: rgba(255,255,255,0.03); /* feedback visual leve ao passar o mouse */
+  transform: translateY(-10px);
 }
 
 .contato-item img {
-  width: 70px;
+  width: 60px;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
 }
@@ -390,13 +459,12 @@ h1, h2, h3 {
 .contato-item span {
   font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: var(--text-soft);
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
-.contato-item:hover {
-  transform: translateY(-10px);
-}
 .contato-item:hover span {
   color: var(--accent);
 }
@@ -405,16 +473,17 @@ h1, h2, h3 {
 /* rodape                    */
 /* ========================= */
 .rodape {
-  padding: 30px;
+  padding: 40px;
   background: #000;
   border-top: 1px solid #111;
   font-size: 14px;
   color: #555;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 /* ========================= */
-/* mobile / tablet (ajustes) */
+/* mobile / tablet e outros ajustes */
 /* ========================= */
 @media (max-width: 768px) {
 
@@ -425,11 +494,11 @@ h1, h2, h3 {
     justify-self: start;
   }
 
-  /* ajuste do menu lateral */
+  /* ajuste do menu lateral com performance melhorada */
   .menu-topo {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 80%;
     max-width: 300px;
     height: 100vh;
@@ -438,34 +507,37 @@ h1, h2, h3 {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    transition: left .3s ease;
+    
+    /* mudanca para transform (mais performatico que left) */
+    transform: translateX(-100%);
+    transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
+    
     z-index: 999;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
     padding: 20px;
+    border-right: 1px solid #222;
   }
 
   .menu-topo.ativo {
-    left: 0;
+    transform: translateX(0); /* entra na tela */
   }
 
   .menu-topo a {
     font-size: 22px;
     font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
   }
 
 /* ========================= */
   /* capa mobile (ajuste final)*/
   /* ========================= */
   .capa {
-    height: auto;      /* respeita a altura da foto de 1080x940 */
+    height: auto;      /* respeita a altura da foto */
     min-height: auto;
     padding-top: 0;    /* sem espaco extra */
     margin-top: 80px;
-  }
-
-  .capa {
-    position: relative;
-    overflow: hidden;
+    padding-bottom: 50px;
+    display: block;    /* remove flexbox no mobile */
   }
 
   /* dentro do @media (max-width: 768px) */
@@ -473,17 +545,17 @@ h1, h2, h3 {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0; /* agora que tiramos a margem, o bottom 0 e logo acima da foto */
+    bottom: 0; 
     width: 100%;
-    height: 55%; 
-    z-index: 2; /* garante que o degrade fique sobre a foto */
+    height: 60%; /* degrade mais alto para mobile */
+    z-index: 2; 
     
     background: linear-gradient(
       to bottom,
       rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.25) 40%,
-      rgba(0,0,0,0.6) 70%,
-      rgba(0,0,0,1) 100% /* mudei o final para 1 (preto total) para sumir a linha de corte */
+      rgba(0,0,0,0.3) 40%,
+      rgba(0,0,0,0.8) 70%,
+      #050505 100% 
     );
     pointer-events: none;
   }
@@ -491,7 +563,7 @@ h1, h2, h3 {
   .foto-capa {
     margin-bottom: 0;
     width: 100%;
-    height: 420px;        
+    height: 450px;       
     object-fit: cover;   
     object-position: top center;
   }
@@ -500,11 +572,47 @@ h1, h2, h3 {
   .area-videos video {
     width: 100%; 
     height: auto;
-    aspect-ratio: 9/16; /* mantem formato vertical */
+    aspect-ratio: 9/16; 
   }
   
   /* ajuste redes sociais */
   .contato-redes {
     gap: 30px;
+    flex-direction: column; /* empilha no mobile para facilitar o clique */
+  }
+  
+  .contato-item {
+      width: 100%;
+      background: rgba(255,255,255,0.05); /* fundo leve no mobile */
+  }
+}
+
+/* ========================= */
+/* animacoes de entrada      */
+/* ========================= */
+
+/* estado inicial */
+.js-scroll {
+  opacity: 0;
+  transform: translateY(40px); /* aumentei um pouco a distancia */
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: blur(4px); 
+  will-change: opacity, transform; /* avisa o navegador para preparar a animacao */
+}
+
+/* estado final */
+.js-scroll.ativo {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion) {
+  .js-scroll {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }
