@@ -48,6 +48,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <a href="https://api.whatsapp.com/send?phone=5581992192237&text=%F0%9F%8E%A4%20Ol%C3%A1%2C%20Tarc%C3%ADsio!%0ATenho%20interesse%20em%20contratar%20um%20show.%20Pode%20me%20passar%20agenda%20e%20informa%C3%A7%C3%B5es%3F" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
@@ -257,37 +258,27 @@
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
-// =========================
-    // ANIMAÇÃO AO SCROLL (INTELIGENTE)
-    // =========================
-    
-    // Seleciona tudo o que deve animar
+    // scroll animacoes
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
 
-    // Esconde tudo inicialmente
     elementosParaAnimar.forEach(el => {
         el.classList.add('js-scroll');
     });
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // A MÁGICA ACONTECE AQUI:
-            // O 'isIntersecting' é verdadeiro se:
-            // 1. Você rolou a tela até o elemento.
-            // 2. OU se o elemento JÁ estava na tela quando o site abriu.
             if(entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('ativo');
-                }, 100); 
-                observer.unobserve(entry.target);
+                entry.target.classList.add('ativo');
+                observer.unobserve(entry.target); 
             }
         });
     }, {
-        threshold: 0.1, // Basta 10% do elemento aparecer para disparar
-        rootMargin: "0px" // REMOVIDO o bloqueio de -150px. Agora é liberdade total!
+        threshold: 0, 
+        rootMargin: "0px 0px -50px 0px" 
     });
 
     elementosParaAnimar.forEach((el) => observer.observe(el));
   </script>
+
 </body>
 </html>
