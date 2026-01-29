@@ -155,32 +155,46 @@
     <div class="area-videos">
 
     <section class="videos" id="videos">
-      <h2>Apresentações</h2>
-      <div class="area-videos">
-        <video src="vídeos/video01.mp4" autoplay muted loop playsinline></video>
-        <video src="vídeos/video02.mp4" autoplay muted loop playsinline></video>
-        <video src="vídeos/video03.mp4" autoplay muted loop playsinline></video>
-      </div>
-    </section>
+  <h2>Apresentações</h2>
+  <div class="area-videos">
+    
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video01.webm" type="video/webm">
+      <source src="vídeos/video01.mp4" type="video/mp4">
+    </video>
 
-    <section class="sobre" id="sobre">
-      <div class="sobre-container">
-        <h2>Sobre Tarcísio Lima</h2>
-        <p>
-          Versatilidade, carisma e energia definem Tarcísio Lima. O artista pernambucano leva aos palcos 
-          um repertório dinâmico que transita entre os grandes sucessos do Forró, Brega, Sertanejo e MPB. 
-          Com presença de palco marcante e interação constante, Tarcísio transforma cada apresentação em 
-          uma experiência única, garantindo a conexão perfeita com todos os tipos de público.
-        </p>
-      </div>
-    </section>
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video02.webm" type="video/webm">
+      <source src="vídeos/video02.mp4" type="video/mp4">
+    </video>
 
-    <section class="contato" id="contato">
-      <div class="contato-container">
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video03.webm" type="video/webm">
+      <source src="vídeos/video03.mp4" type="video/mp4">
+    </video>
+
+  </div>
+</section>
+
+    <div class="secao-mista">
+      
+      <section class="sobre" id="sobre">
+        <div class="sobre-conteudo">
+          <h2>Sobre Tarcísio Lima</h2>
+          <p>
+            Versatilidade, carisma e energia definem Tarcísio Lima. O artista pernambucano leva aos palcos 
+            um repertório dinâmico que transita entre os grandes sucessos do Forró, Brega, Sertanejo e MPB. 
+            Com presença de palco marcante e interação constante, Tarcísio transforma cada apresentação em 
+            uma experiência única, garantindo a conexão perfeita com todos os tipos de público.
+          </p>
+        </div>
+      </section>
+
+      <section class="contato" id="contato">
         <h2>Contato para Shows</h2>
-
+        
         <div class="contato-redes">
-          <a href="https://api.whatsapp.com/send?phone=5581992192237&text=%F0%9F%8E%B6%20Ol%C3%A1%2C%20Tarc%C3%ADsio!%0AGostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20shows%2C%20agenda%20dispon%C3%ADvel%20e%20valores.%20Obrigado!" target="_blank" class="contato-item">
+          <a href="https://api.whatsapp.com/send?phone=5581992192237" target="_blank" class="contato-item">
             <img src="imagens/whatsapp1.png" alt="WhatsApp">
             <span>WhatsApp</span>
           </a>
@@ -195,9 +209,10 @@
             <span>Instagram</span>
           </a>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+
+    </div>
+
 
   <footer class="rodape">
     <p>&copy; 2026 Tarcísio Lima. Todos os direitos reservados</p>
@@ -258,7 +273,8 @@
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
-    // scroll animacoes
+// --- ANIMAÇÃO SCROLL REVEAL (MAGIA DO SCROLL DE VOLTA) ---
+    
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
 
     elementosParaAnimar.forEach(el => {
@@ -269,7 +285,7 @@
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 entry.target.classList.add('ativo');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target); // Para de olhar depois que animou
             }
         });
     }, {
