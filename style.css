@@ -235,7 +235,7 @@ h1, h2, h3 {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
-  padding: 20px 0; /* espaco extra para a sombra e hover */
+  padding: 20px 70px; 
 }
 
 .agenda-track {
