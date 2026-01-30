@@ -37,21 +37,3 @@ markdown:
       tr: none
       td: none
       li: right-of-prefix
-
-_inputs:
-  arquivo_webm:
-    type: file
-    comment: "Selecione o vídeo em formato WEBM"
-  arquivo_mp4:
-    type: file
-    comment: "Selecione o vídeo em formato MP4"
-  capa_desktop:
-    type: image
-  capa_mobile:
-    type: image
-  foto_seo:
-    type: image
-  logo_topo:
-    type: image
-  favicon:
-    type: image
