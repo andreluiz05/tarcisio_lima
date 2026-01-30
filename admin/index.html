@@ -4,22 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel Administrativo - Tarcísio Lima</title>
-    
     <link rel="icon" type="image/png" href="/imagens/icone.png">
-    
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
+
     <script>
-      // Força o navegador a decorar o endereço do Netlify
+      // Grava na memória do navegador o endereço correto
       localStorage.setItem("netlifySiteURL", "https://tarcisio-lima.netlify.app");
       
-      // Garante que o Widget saiba onde bater
-      window.netlifyIdentity.init({
-        APIUrl: "https://tarcisio-lima.netlify.app/.netlify/identity"
-      });
+      // Cria uma variável global que alguns widgets usam
+      window.netlifySiteURL = "https://tarcisio-lima.netlify.app";
     </script>
-
+  </head>
+  
+  <body>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
