@@ -1,6 +1,3 @@
----
-layout: null
----
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,8 +5,11 @@ layout: null
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
   <title>Tarcísio Lima | Site Oficial</title>
-  
   <meta name="description" content="Site oficial do cantor Tarcísio Lima. Confira a agenda de shows atualizada, lançamentos, vídeos, biografia e entre em contato para contratar eventos.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.tarcisiolima.com.br/">
@@ -26,12 +26,7 @@ layout: null
   <link rel="icon" type="image/png" sizes="192x192" href="imagens/icone.png">
   <link rel="icon" type="image/png" sizes="512x512" href="imagens/icone.png">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <script type="application/ld+json">
   {
@@ -56,7 +51,7 @@ layout: null
 
 <body>
 
-  <a href="https://api.whatsapp.com/send?phone={{ site.data.site.whatsapp }}&text=%F0%9F%8E%A4%20Ol%C3%A1%2C%20Tarc%C3%ADsio!%0ATenho%20interesse%20em%20contratar%20um%20show.%20Pode%20me%20passar%20agenda%20e%20informa%C3%A7%C3%B5es%3F" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=5581992192237&text=%F0%9F%8E%A4%20Ol%C3%A1%2C%20Tarc%C3%ADsio!%0ATenho%20interesse%20em%20contratar%20um%20show.%20Pode%20me%20passar%20agenda%20e%20informa%C3%A7%C3%B5es%3F" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
     <img src="./imagens/whatsapp.png" alt="WhatsApp Tarcísio Lima">
   </a>
   
@@ -84,14 +79,13 @@ layout: null
   </header>
   
   <main>
-    
     <section class="capa" id="inicio">
       <picture>
         <source media="(max-width: 768px)" srcset="imagens/capa-mobile.jpg">
+        
         <img src="imagens/capa-desktop.jpg" alt="Foto do cantor Tarcísio Lima" class="foto-capa">
       </picture>
     </section>
-
     <section class="agenda" id="agenda">
       <h2>Agenda de Shows</h2>
 
@@ -99,41 +93,100 @@ layout: null
         <button class="agenda-btn prev" aria-label="Anterior">&#10094;</button>
 
         <div class="agenda-track">
-          
-          {% for show in site.data.agenda %}
           <article class="agenda-card">
-            <span class="data">{{ show.dia }} {{ show.mes }}</span>
-            <h3>{{ show.cidade }}</h3>
-            <p>{{ show.local }}</p>
+            <span class="data">16 JAN</span>
+            <h3>Recife / PE</h3>
+            <p>Evento Privado</p>
           </article>
-          {% endfor %}
 
+          <article class="agenda-card">
+            <span class="data">18 JAN</span>
+            <h3>Ilha de Itamaracá / PE</h3>
+            <p>Bar do Dudu</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">18 JAN</span>
+            <h3>Igarassu / PE</h3>
+            <p>Igara Fest Cruz de Rebouças</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">23 JAN</span>
+            <h3>Igarassu / PE</h3>
+            <p>Boteco do Seu Tota</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">23 JAN</span>
+            <h3>Itapissuma / PE</h3>
+            <p>Festa Privada</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">24 JAN</span>
+            <h3>Paudalho / PE</h3>
+            <p>Festa Cavalgada Privada</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">25 JAN</span>
+            <h3>Abreu e Lima / PE</h3>
+            <p>Petiscaria Bom Sabor</p>
+          </article>
+
+          <article class="agenda-card">
+            <span class="data">31 JAN</span>
+            <h3>Paulista / PE</h3>
+            <p>Boteco do Biu</p>
+          </article>
+
+           <article class="agenda-card">
+            <span class="data">01 FEV</span>
+            <h3>Olinda / PE</h3>
+            <p>Prévia do Bloco do Pix</p>
+          </article>
         </div>
 
         <button class="agenda-btn next" aria-label="Próximo">&#10095;</button>
       </div>
     </section>
 
-    <section class="videos" id="videos">
-      <h2>Apresentações</h2>
-      <div class="area-videos">
-        
-        {% for video in site.data.videos %}
-        <video autoplay muted loop playsinline>
-          <source src="{{ video.arquivo }}.webm" type="video/webm">
-          <source src="{{ video.arquivo }}.mp4" type="video/mp4">
-        </video>
-        {% endfor %}
+    <div class="area-videos">
 
-      </div>
-    </section>
+    <section class="videos" id="videos">
+  <h2>Apresentações</h2>
+  <div class="area-videos">
+    
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video01.webm" type="video/webm">
+      <source src="vídeos/video01.mp4" type="video/mp4">
+    </video>
+
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video02.webm" type="video/webm">
+      <source src="vídeos/video02.mp4" type="video/mp4">
+    </video>
+
+    <video autoplay muted loop playsinline>
+      <source src="vídeos/video03.webm" type="video/webm">
+      <source src="vídeos/video03.mp4" type="video/mp4">
+    </video>
+
+  </div>
+</section>
 
     <div class="secao-mista">
       
       <section class="sobre" id="sobre">
         <div class="sobre-conteudo">
-          <h2>{{ site.data.site.sobre_titulo }}</h2>
-          <p>{{ site.data.site.sobre_texto }}</p>
+          <h2>Sobre Tarcísio Lima</h2>
+          <p>
+            Versatilidade, carisma e energia definem Tarcísio Lima. O artista pernambucano leva aos palcos 
+            um repertório dinâmico que transita entre os grandes sucessos do Forró, Brega, Sertanejo e MPB. 
+            Com presença de palco marcante e interação constante, Tarcísio transforma cada apresentação em 
+            uma experiência única, garantindo a conexão perfeita com todos os tipos de público.
+          </p>
         </div>
       </section>
 
@@ -141,17 +194,17 @@ layout: null
         <h2>Contato para Shows</h2>
         
         <div class="contato-redes">
-          <a href="https://api.whatsapp.com/send?phone={{ site.data.site.whatsapp }}&text=%F0%9F%8E%B6%20Ol%C3%A1%2C%20Tarc%C3%ADsio!%0AGostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20shows%2C%20agenda%20dispon%C3%ADvel%20e%20valores.%20Obrigado!" target="_blank" class="contato-item">
+          <a href="https://api.whatsapp.com/send?phone=5581992192237" target="_blank" class="contato-item">
             <img src="imagens/whatsapp1.png" alt="WhatsApp">
             <span>WhatsApp</span>
           </a>
 
-          <a href="mailto:{{ site.data.site.email }}" class="contato-item">
+          <a href="mailto:contato@tarcisiolima.com.br" class="contato-item">
             <img src="imagens/email.png" alt="Email">
             <span>Email</span>
           </a>
 
-          <a href="{{ site.data.site.instagram }}" target="_blank" class="contato-item">
+          <a href="https://www.instagram.com/tarcisiolima_cantor/" target="_blank" class="contato-item">
             <img src="imagens/instagram.png" alt="Instagram">
             <span>Instagram</span>
           </a>
@@ -159,18 +212,18 @@ layout: null
       </section>
 
     </div>
-  </main>
+
 
   <footer class="rodape">
     <p>&copy; 2026 Tarcísio Lima. Todos os direitos reservados</p>
   </footer>
 
   <script>
-    // --- menu mobile ---
+    // Menu Mobile
     const btn = document.getElementById('btnMenu');
     const menu = document.getElementById('menuTopo');
     const fundo = document.getElementById('fundoEscuro');
-    const menuLinks = document.querySelectorAll('.menu-topo a'); 
+    const menuLinks = document.querySelectorAll('.menu-topo a'); // Seleciona links
     
     function toggleMenu() {
       menu.classList.toggle('ativo');
@@ -178,57 +231,50 @@ layout: null
       btn.textContent = menu.classList.contains('ativo') ? '✕' : '☰';
     }
 
-    if(btn) {
-      btn.onclick = toggleMenu;
-      fundo.onclick = toggleMenu;
-    }
+    btn.onclick = toggleMenu;
+    fundo.onclick = toggleMenu;
     
-    // fecha o menu ao clicar em um link
+    // Fecha o menu ao clicar em um link
     menuLinks.forEach(link => {
         link.onclick = () => {
             if(menu.classList.contains('ativo')) toggleMenu();
         };
     });
 
-    // --- agenda carousel ---
+    // Agenda Carousel
     const track = document.querySelector('.agenda-track');
     const btnNext = document.querySelector('.next');
     const btnPrev = document.querySelector('.prev');
 
     let posicao = 0;
     
-    // funcao para calcular largura do card dinamicamente
+    // Função para calcular largura do card dinamicamente
     function getCardWidth() {
         const card = document.querySelector('.agenda-card');
-        if(!card) return 0;
         const style = window.getComputedStyle(card);
-        const margin = parseFloat(style.marginRight) || 20; 
+        const margin = parseFloat(style.marginRight) || 20; // 20px é o gap do css
         return card.offsetWidth + margin;
     }
 
-    if(btnNext && track) {
-      btnNext.onclick = function () {
-        const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-        const passo = getCardWidth();
-        if (posicao < maxScroll) {
-          posicao += passo;
-          track.style.transform = `translateX(-${posicao}px)`;
-        }
-      };
-    }
+    btnNext.onclick = function () {
+      const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
+      const passo = getCardWidth();
+      if (posicao < maxScroll) {
+        posicao += passo;
+        track.style.transform = `translateX(-${posicao}px)`;
+      }
+    };
 
-    if(btnPrev && track) {
-      btnPrev.onclick = function () {
-        const passo = getCardWidth();
-        if (posicao > 0) {
-          posicao -= passo;
-          if (posicao < 0) posicao = 0;
-          track.style.transform = `translateX(-${posicao}px)`;
-        }
-      };
-    }
-
-    // --- animacao scroll reveal ---
+    btnPrev.onclick = function () {
+      const passo = getCardWidth();
+      if (posicao > 0) {
+        posicao -= passo;
+        if (posicao < 0) posicao = 0;
+        track.style.transform = `translateX(-${posicao}px)`;
+      }
+    };
+// --- ANIMAÇÃO SCROLL REVEAL (MAGIA DO SCROLL DE VOLTA) ---
+    
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
 
     elementosParaAnimar.forEach(el => {
@@ -239,7 +285,7 @@ layout: null
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 entry.target.classList.add('ativo');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target); // Para de olhar depois que animou
             }
         });
     }, {
@@ -248,20 +294,7 @@ layout: null
     });
 
     elementosParaAnimar.forEach((el) => observer.observe(el));
-
-    // --- redirecionamento automatico pos login ---
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
   </script>
 
 </body>
 </html>
-
-
