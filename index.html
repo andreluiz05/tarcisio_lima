@@ -5,14 +5,14 @@ whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre 
 email_contato: contato@tarcisiolima.com.br
 instagram_url: https://www.instagram.com/tarcisiolima_cantor/
 
-# --- PERSONALIZAÇÃO VISUAL ---
-personalizacao:
-  cor_fundo: '#050505'
-  cor_cards: '#121212'
-  cor_texto: '#ffffff'
-  cor_destaque: '#e6d37a'
-  fonte_titulos: 'Playfair Display'
-  fonte_texto: 'Inter'
+# --- CORES E FONTES (TEMA) ---
+# Agora estão na raiz para o painel reconhecer
+tema_cor_fundo: '#050505'
+tema_cor_cards: '#121212'
+tema_cor_texto: '#ffffff'
+tema_cor_destaque: '#e6d37a'
+tema_fonte_titulos: 'Playfair Display'
+tema_fonte_texto: 'Inter'
 
 imagens:
   capa_desktop: imagens/capa-desktop.jpg
@@ -50,42 +50,39 @@ videos_destaque:
   - arquivo_webm: vídeos/video03.webm
     arquivo_mp4: vídeos/video03.mp4
 
-# --- CONFIGURAÇÃO AVANÇADA DO PAINEL ---
+# --- CONFIGURAÇÃO VISUAL DO PAINEL ---
 _inputs:
-  personalizacao:
-    type: object
+  # Configuração das Cores (Agora vai funcionar!)
+  tema_cor_fundo:
+    type: color
+    label: "🎨 Cor do Fundo"
+  tema_cor_cards:
+    type: color
+    label: "🎨 Cor dos Cards"
+  tema_cor_texto:
+    type: color
+    label: "🎨 Cor do Texto"
+  tema_cor_destaque:
+    type: color
+    label: "🎨 Cor Destaque (Dourado)"
+  tema_fonte_titulos:
+    type: select
+    label: "✒️ Fonte dos Títulos"
     options:
-      sub_inputs:
-        cor_fundo:
-          type: color
-          label: "Cor do Fundo"
-        cor_cards:
-          type: color
-          label: "Cor dos Cards"
-        cor_texto:
-          type: color
-          label: "Cor do Texto"
-        cor_destaque:
-          type: color
-          label: "Cor Destaque (Dourado)"
-        fonte_titulos:
-          type: select
-          label: "Fonte dos Títulos"
-          options:
-            values: ['Playfair Display', 'Inter', 'Arial']
-        fonte_texto:
-          type: select
-          label: "Fonte do Texto"
-          options:
-            values: ['Inter', 'Playfair Display', 'Arial']
+      values: ['Playfair Display', 'Inter', 'Arial', 'Courier New']
+  tema_fonte_texto:
+    type: select
+    label: "✒️ Fonte do Texto"
+    options:
+      values: ['Inter', 'Playfair Display', 'Arial', 'Verdana']
 
   # Uploads de Arquivos
   arquivo_webm:
     type: file
-    comment: "Selecione o vídeo .WEBM"
+    label: "Vídeo WEBM"
   arquivo_mp4:
     type: file
-    comment: "Selecione o vídeo .MP4"
+    label: "Vídeo MP4"
   capa_desktop:
     type: image
   capa_mobile:
@@ -135,13 +132,13 @@ _inputs:
 
   <style>
     :root {
-      --bg-main: {{ page.personalizacao.cor_fundo }};
-      --bg-card: {{ page.personalizacao.cor_cards }};
-      --text-main: {{ page.personalizacao.cor_texto }};
-      --accent: {{ page.personalizacao.cor_destaque }};
+      --bg-main: {{ page.tema_cor_fundo }};
+      --bg-card: {{ page.tema_cor_cards }};
+      --text-main: {{ page.tema_cor_texto }};
+      --accent: {{ page.tema_cor_destaque }};
     }
-    body { font-family: '{{ page.personalizacao.fonte_texto }}', sans-serif; }
-    h1, h2, h3 { font-family: '{{ page.personalizacao.fonte_titulos }}', serif; }
+    body { font-family: '{{ page.tema_fonte_texto }}', sans-serif; }
+    h1, h2, h3 { font-family: '{{ page.tema_fonte_titulos }}', serif; }
   </style>
 
   <script type="application/ld+json">
