@@ -6,9 +6,21 @@ collections_config:
     path: ''
     icon: wysiwyg
     disable_url: false
+    _inputs:
+      $.videos_destaque[*].arquivo_webm:
+        type: auto
+        context:
+          title:
+          icon:
+          content:
+          open:
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+_inputs:
+  $.videos_destaque[*].arquivo_webm:
+    cascade: true
 _snippets_imports:
   jekyll: true
 timezone: America/Fortaleza
