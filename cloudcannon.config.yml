@@ -37,7 +37,7 @@ markdown:
       tr: none
       td: none
       li: right-of-prefix
-      # Configuração para forçar os botões de Upload
+
 _inputs:
   arquivo_webm:
     type: file
@@ -48,6 +48,8 @@ _inputs:
   capa_desktop:
     type: image
   capa_mobile:
+    type: image
+  foto_seo:
     type: image
   logo_topo:
     type: image
