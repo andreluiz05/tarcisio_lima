@@ -5,12 +5,12 @@ whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre 
 email_contato: contato@tarcisiolima.com.br
 instagram_url: https://www.instagram.com/tarcisiolima_cantor/
 
-# --- PERSONALIZAÇÃO VISUAL (Novos controles de tema) ---
+# --- PERSONALIZAÇÃO VISUAL ---
 personalizacao:
   cor_fundo: '#050505'
   cor_cards: '#121212'
   cor_texto: '#ffffff'
-  cor_destaque: '#e6d37a' # Dourado padrão
+  cor_destaque: '#e6d37a'
   fonte_titulos: 'Playfair Display'
   fonte_texto: 'Inter'
 
@@ -50,64 +50,58 @@ videos_destaque:
   - arquivo_webm: vídeos/video03.webm
     arquivo_mp4: vídeos/video03.mp4
 
-# --- CONFIGURAÇÃO DO PAINEL (Inputs de Upload e Cores) ---
+# --- CONFIGURAÇÃO AVANÇADA DO PAINEL ---
 _inputs:
-  # Configuração das Cores e Fontes
   personalizacao:
-    cor_fundo:
-      type: color
-      comment: "Cor de fundo do site"
-    cor_cards:
-      type: color
-      comment: "Cor de fundo dos cards e elementos"
-    cor_texto:
-      type: color
-      comment: "Cor principal do texto"
-    cor_destaque:
-      type: color
-      comment: "Cor de destaque (botões, datas, bordas)"
-    fonte_titulos:
-      type: select
-      comment: "Fonte dos Títulos (H1, H2)"
-      options:
-        values: ['Playfair Display', 'Inter', 'Arial']
-    fonte_texto:
-      type: select
-      comment: "Fonte dos Textos gerais"
-      options:
-        values: ['Inter', 'Playfair Display', 'Arial']
+    type: object
+    options:
+      sub_inputs:
+        cor_fundo:
+          type: color
+          label: "Cor do Fundo"
+        cor_cards:
+          type: color
+          label: "Cor dos Cards"
+        cor_texto:
+          type: color
+          label: "Cor do Texto"
+        cor_destaque:
+          type: color
+          label: "Cor Destaque (Dourado)"
+        fonte_titulos:
+          type: select
+          label: "Fonte dos Títulos"
+          options:
+            values: ['Playfair Display', 'Inter', 'Arial']
+        fonte_texto:
+          type: select
+          label: "Fonte do Texto"
+          options:
+            values: ['Inter', 'Playfair Display', 'Arial']
 
-  # Uploads de Arquivos (Já existentes)
+  # Uploads de Arquivos
   arquivo_webm:
     type: file
-    comment: "Selecione o vídeo .WEBM do seu computador"
+    comment: "Selecione o vídeo .WEBM"
   arquivo_mp4:
     type: file
-    comment: "Selecione o vídeo .MP4 do seu computador"
+    comment: "Selecione o vídeo .MP4"
   capa_desktop:
     type: image
-    comment: "Imagem Grande (Desktop)"
   capa_mobile:
     type: image
-    comment: "Imagem Pequena (Celular)"
   foto_seo:
     type: image
-    comment: "Foto que aparece no Google/Zap"
   logo_topo:
     type: image
-    comment: "Logo do Menu Superior"
   favicon:
     type: image
-    comment: "Ícone da Aba do Navegador"
   icon_whatsapp:
     type: image
-    comment: "Ícone do WhatsApp (Seção Contato)"
   icon_email:
     type: image
-    comment: "Ícone do Email (Seção Contato)"
   icon_instagram:
     type: image
-    comment: "Ícone do Instagram (Seção Contato)"
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -121,7 +115,7 @@ _inputs:
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <title>Tarcísio Lima | Site Oficial</title>
-  <meta name="description" content="Site oficial do cantor Tarcísio Lima. Confira a agenda de shows atualizada, lançamentos, vídeos, biografia e entre em contato para contratar eventos." />
+  <meta name="description" content="Site oficial do cantor Tarcísio Lima. Confira a agenda de shows atualizada." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.tarcisiolima.com.br/" />
 
@@ -141,20 +135,13 @@ _inputs:
 
   <style>
     :root {
-      /* Pega as cores escolhidas no painel e joga nas variáveis CSS */
       --bg-main: {{ page.personalizacao.cor_fundo }};
       --bg-card: {{ page.personalizacao.cor_cards }};
       --text-main: {{ page.personalizacao.cor_texto }};
       --accent: {{ page.personalizacao.cor_destaque }};
     }
-
-    /* Aplica as fontes escolhidas */
-    body {
-        font-family: '{{ page.personalizacao.fonte_texto }}', sans-serif;
-    }
-    h1, h2, h3 {
-        font-family: '{{ page.personalizacao.fonte_titulos }}', serif;
-    }
+    body { font-family: '{{ page.personalizacao.fonte_texto }}', sans-serif; }
+    h1, h2, h3 { font-family: '{{ page.personalizacao.fonte_titulos }}', serif; }
   </style>
 
   <script type="application/ld+json">
@@ -165,15 +152,9 @@ _inputs:
     "url": "https://www.tarcisiolima.com.br/",
     "logo": "https://www.tarcisiolima.com.br/{{ page.imagens.favicon }}",
     "image": "https://www.tarcisiolima.com.br/{{ page.imagens.foto_seo }}",
-    "description": "Cantor e compositor brasileiro. Confira a agenda de shows e lançamentos.",
-    "sameAs": [
-      "{{ page.instagram_url }}"
-    ],
-    "genre": ["Música Brasileira", "Forró", "MPB"],
-    "location": {
-      "@type": "Place",
-      "name": "Brasil"
-    }
+    "description": "Cantor e compositor brasileiro.",
+    "sameAs": ["{{ page.instagram_url }}"],
+    "location": { "@type": "Place", "name": "Brasil" }
   }
   </script>
 </head>
@@ -188,22 +169,16 @@ _inputs:
 
   <header class="barra-topo">
     <div class="area-topo">
-       
-      <button class="btn-menu" id="btnMenu" aria-label="Abrir menu">
-        ☰
-      </button>
-   
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menu">☰</button>
       <a href="index.html" class="logo-topo">
         <img src="{{ page.imagens.logo_topo }}" alt="Tarcísio Lima" />
       </a>
-   
       <nav class="menu-topo" id="menuTopo">
         <a href="#inicio">Início</a>
         <a href="#agenda">Agenda</a>
         <a href="#videos">Vídeos</a>
         <a href="#contato">Contato</a>
       </nav>
-   
     </div>
   </header>
    
@@ -217,10 +192,8 @@ _inputs:
 
     <section class="agenda" id="agenda">
       <h2>Agenda de Shows</h2>
-
       <div class="agenda-wrapper">
         <button class="agenda-btn prev" aria-label="Anterior">&#10094;</button>
-
         <div class="agenda-track">
           {% for show in page.agenda %}
           <article class="agenda-card">
@@ -230,7 +203,6 @@ _inputs:
           </article>
           {% endfor %}
         </div>
-
         <button class="agenda-btn next" aria-label="Próximo">&#10095;</button>
       </div>
     </section>
@@ -239,19 +211,16 @@ _inputs:
       <section class="videos" id="videos">
         <h2>Apresentações</h2>
         <div class="area-videos">
-          
           {% for video in page.videos_destaque %}
           <video autoplay muted loop playsinline>
             <source src="{{ video.arquivo_webm }}" type="video/webm" />
             <source src="{{ video.arquivo_mp4 }}" type="video/mp4" />
           </video>
           {% endfor %}
-
         </div>
       </section>
 
       <div class="secao-mista">
-       
         <section class="sobre" id="sobre">
           <div class="sobre-conteudo">
             <h2>Sobre Tarcísio Lima</h2>
@@ -261,25 +230,21 @@ _inputs:
 
         <section class="contato" id="contato">
           <h2>Contato para Shows</h2>
-           
           <div class="contato-redes">
             <a href="https://api.whatsapp.com/send?phone={{ page.whatsapp_numero }}&text={{ page.whatsapp_mensagem_contato }}" target="_blank" class="contato-item">
               <img src="{{ page.imagens.icon_whatsapp }}" alt="WhatsApp" />
               <span>WhatsApp</span>
             </a>
-
             <a href="mailto:{{ page.email_contato }}" class="contato-item">
               <img src="{{ page.imagens.icon_email }}" alt="Email" />
               <span>Email</span>
             </a>
-
             <a href="{{ page.instagram_url }}" target="_blank" class="contato-item">
               <img src="{{ page.imagens.icon_instagram }}" alt="Instagram" />
               <span>Instagram</span>
             </a>
           </div>
         </section>
-
       </div>
     </div>
   </main>
@@ -289,56 +254,42 @@ _inputs:
   </footer>
 
   <script>
-    // Menu Mobile
     const btn = document.getElementById('btnMenu');
     const menu = document.getElementById('menuTopo');
     const fundo = document.getElementById('fundoEscuro');
-    const menuLinks = document.querySelectorAll('.menu-topo a'); // Seleciona links
+    const menuLinks = document.querySelectorAll('.menu-topo a');
     
     function toggleMenu() {
       menu.classList.toggle('ativo');
       fundo.classList.toggle('ativo');
       btn.textContent = menu.classList.contains('ativo') ? '✕' : '☰';
     }
-
     btn.onclick = toggleMenu;
     fundo.onclick = toggleMenu;
-    
-    // Fecha o menu ao clicar em um link
-    menuLinks.forEach(link => {
-        link.onclick = () => {
-            if(menu.classList.contains('ativo')) toggleMenu();
-        };
-    });
+    menuLinks.forEach(link => { link.onclick = () => { if(menu.classList.contains('ativo')) toggleMenu(); }; });
 
-    // Agenda Carousel
     const track = document.querySelector('.agenda-track');
     const btnNext = document.querySelector('.next');
     const btnPrev = document.querySelector('.prev');
-
     let posicao = 0;
     
-    // Função para calcular largura do card dinamicamente
     function getCardWidth() {
         const card = document.querySelector('.agenda-card');
-        if (!card) return 0; // Previne erro se não houver shows
+        if (!card) return 0;
         const style = window.getComputedStyle(card);
-        const margin = parseFloat(style.marginRight) || 20; // 20px é o gap do css
+        const margin = parseFloat(style.marginRight) || 20;
         return card.offsetWidth + margin;
     }
-
     btnNext.onclick = function () {
       if (!track) return;
       const cardWidth = getCardWidth();
       if (cardWidth === 0) return;
-      
       const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
       if (posicao < maxScroll) {
         posicao += cardWidth;
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
-
     btnPrev.onclick = function () {
       const cardWidth = getCardWidth();
       if (posicao > 0) {
@@ -347,28 +298,18 @@ _inputs:
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
-// --- ANIMAÇÃO SCROLL REVEAL (MAGIA DO SCROLL DE VOLTA) ---
     
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
-
-    elementosParaAnimar.forEach(el => {
-        el.classList.add('js-scroll');
-    });
-
+    elementosParaAnimar.forEach(el => el.classList.add('js-scroll'));
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 entry.target.classList.add('ativo');
-                observer.unobserve(entry.target); // Para de olhar depois que animou
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0, 
-        rootMargin: "0px 0px -50px 0px" 
-    });
-
+    }, { threshold: 0, rootMargin: "0px 0px -50px 0px" });
     elementosParaAnimar.forEach((el) => observer.observe(el));
   </script>
-
 </body>
 </html>
