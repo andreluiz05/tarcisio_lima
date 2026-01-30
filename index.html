@@ -4,16 +4,12 @@ whatsapp_mensagem_ola: Olá, Tarcísio! Tenho interesse em contratar o seu show!
 whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre shows e valores.
 email_contato: contato@tarcisiolima.com.br
 instagram_url: https://www.instagram.com/tarcisiolima_cantor/
-
-# --- CORES E FONTES (TEMA) ---
-# Agora estão na raiz para o painel reconhecer
 tema_cor_fundo: '#050505'
-tema_cor_cards: '#121212'
+tema_cor_cards: '#003bce'
 tema_cor_texto: '#ffffff'
 tema_cor_destaque: '#e6d37a'
-tema_fonte_titulos: 'Playfair Display'
-tema_fonte_texto: 'Inter'
-
+tema_fonte_titulos: Playfair Display
+tema_fonte_texto: Inter
 imagens:
   capa_desktop: imagens/capa-desktop.jpg
   capa_mobile: imagens/capa-mobile.jpg
@@ -23,14 +19,12 @@ imagens:
   icon_whatsapp: imagens/whatsapp1.png
   icon_email: imagens/email.png
   icon_instagram: imagens/instagram.png
-
 sobre_texto: >-
   Versatilidade, carisma e energia definem Tarcísio Lima. O artista pernambucano
   leva aos palcos um repertório dinâmico que transita entre os grandes sucessos
   do Forró, Brega, Sertanejo e MPB. Com presença de palco marcante e interação
   constante, Tarcísio transforma cada apresentação em uma experiência única,
   garantindo a conexão perfeita com todos os tipos de público.
-
 agenda:
   - data: 30 JAN
     cidade: Recife / PE
@@ -41,7 +35,6 @@ agenda:
   - data: 01 FEV
     cidade: Camaragibe-PE
     local: FINEPE
-
 videos_destaque:
   - arquivo_webm: vídeos/video01.webm
     arquivo_mp4: vídeos/video01.mp4
@@ -49,40 +42,43 @@ videos_destaque:
     arquivo_mp4: vídeos/video02.mp4
   - arquivo_webm: vídeos/video03.webm
     arquivo_mp4: vídeos/video03.mp4
-
-# --- CONFIGURAÇÃO VISUAL DO PAINEL ---
 _inputs:
-  # Configuração das Cores (Agora vai funcionar!)
   tema_cor_fundo:
     type: color
-    label: "🎨 Cor do Fundo"
+    label: 🎨 Cor do Fundo
   tema_cor_cards:
     type: color
-    label: "🎨 Cor dos Cards"
+    label: 🎨 Cor dos Cards
   tema_cor_texto:
     type: color
-    label: "🎨 Cor do Texto"
+    label: 🎨 Cor do Texto
   tema_cor_destaque:
     type: color
-    label: "🎨 Cor Destaque (Dourado)"
+    label: 🎨 Cor Destaque (Dourado)
   tema_fonte_titulos:
     type: select
-    label: "✒️ Fonte dos Títulos"
+    label: ✒️ Fonte dos Títulos
     options:
-      values: ['Playfair Display', 'Inter', 'Arial', 'Courier New']
+      values:
+        - Playfair Display
+        - Inter
+        - Arial
+        - Courier New
   tema_fonte_texto:
     type: select
-    label: "✒️ Fonte do Texto"
+    label: ✒️ Fonte do Texto
     options:
-      values: ['Inter', 'Playfair Display', 'Arial', 'Verdana']
-
-  # Uploads de Arquivos
+      values:
+        - Inter
+        - Playfair Display
+        - Arial
+        - Verdana
   arquivo_webm:
     type: file
-    label: "Vídeo WEBM"
+    label: Vídeo WEBM
   arquivo_mp4:
     type: file
-    label: "Vídeo MP4"
+    label: Vídeo MP4
   capa_desktop:
     type: image
   capa_mobile:
