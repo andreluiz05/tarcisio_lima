@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: main
   site_domain: tarcisio-lima.netlify.app
-  # Estas linhas forçam o sistema a olhar para o Netlify:
-  identity_url: "https://tarcisio-lima.netlify.app/.netlify/identity"
-  gateway_url: "https://tarcisio-lima.netlify.app/.netlify/git/github"
 
 media_folder: "imagens/uploads"
 public_folder: "/imagens/uploads"
