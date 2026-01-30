@@ -5,13 +5,21 @@ whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre 
 email_contato: contato@tarcisiolima.com.br
 instagram_url: https://www.instagram.com/tarcisiolima_cantor/
 
+# --- PERSONALIZAÇÃO VISUAL (Novos controles de tema) ---
+personalizacao:
+  cor_fundo: '#050505'
+  cor_cards: '#121212'
+  cor_texto: '#ffffff'
+  cor_destaque: '#e6d37a' # Dourado padrão
+  fonte_titulos: 'Playfair Display'
+  fonte_texto: 'Inter'
+
 imagens:
   capa_desktop: imagens/capa-desktop.jpg
   capa_mobile: imagens/capa-mobile.jpg
   foto_seo: imagens/foto-principal.jpg
   logo_topo: imagens/logo.png
   favicon: imagens/icone.png
-  # Ícones de Contato (Novos)
   icon_whatsapp: imagens/whatsapp1.png
   icon_email: imagens/email.png
   icon_instagram: imagens/instagram.png
@@ -42,8 +50,34 @@ videos_destaque:
   - arquivo_webm: vídeos/video03.webm
     arquivo_mp4: vídeos/video03.mp4
 
-# --- CONFIGURAÇÃO DOS BOTÕES DE UPLOAD ---
+# --- CONFIGURAÇÃO DO PAINEL (Inputs de Upload e Cores) ---
 _inputs:
+  # Configuração das Cores e Fontes
+  personalizacao:
+    cor_fundo:
+      type: color
+      comment: "Cor de fundo do site"
+    cor_cards:
+      type: color
+      comment: "Cor de fundo dos cards e elementos"
+    cor_texto:
+      type: color
+      comment: "Cor principal do texto"
+    cor_destaque:
+      type: color
+      comment: "Cor de destaque (botões, datas, bordas)"
+    fonte_titulos:
+      type: select
+      comment: "Fonte dos Títulos (H1, H2)"
+      options:
+        values: ['Playfair Display', 'Inter', 'Arial']
+    fonte_texto:
+      type: select
+      comment: "Fonte dos Textos gerais"
+      options:
+        values: ['Inter', 'Playfair Display', 'Arial']
+
+  # Uploads de Arquivos (Já existentes)
   arquivo_webm:
     type: file
     comment: "Selecione o vídeo .WEBM do seu computador"
@@ -104,6 +138,24 @@ _inputs:
   <link rel="icon" type="image/png" sizes="512x512" href="{{ page.imagens.favicon }}" />
    
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      /* Pega as cores escolhidas no painel e joga nas variáveis CSS */
+      --bg-main: {{ page.personalizacao.cor_fundo }};
+      --bg-card: {{ page.personalizacao.cor_cards }};
+      --text-main: {{ page.personalizacao.cor_texto }};
+      --accent: {{ page.personalizacao.cor_destaque }};
+    }
+
+    /* Aplica as fontes escolhidas */
+    body {
+        font-family: '{{ page.personalizacao.fonte_texto }}', sans-serif;
+    }
+    h1, h2, h3 {
+        font-family: '{{ page.personalizacao.fonte_titulos }}', serif;
+    }
+  </style>
 
   <script type="application/ld+json">
   {
