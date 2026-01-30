@@ -4,16 +4,21 @@ whatsapp_mensagem_ola: Olá, Tarcísio! Tenho interesse em contratar o seu show!
 whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre shows e valores.
 email_contato: contato@tarcisiolima.com.br
 instagram_url: https://www.instagram.com/tarcisiolima_cantor/
+
 imagens:
   capa_desktop: imagens/capa-desktop.jpg
   capa_mobile: imagens/capa-mobile.jpg
   foto_seo: imagens/foto-principal.jpg
+  logo_topo: imagens/logo.png
+  favicon: imagens/icone.png
+
 sobre_texto: >-
   Versatilidade, carisma e energia definem Tarcísio Lima. O artista pernambucano
   leva aos palcos um repertório dinâmico que transita entre os grandes sucessos
   do Forró, Brega, Sertanejo e MPB. Com presença de palco marcante e interação
   constante, Tarcísio transforma cada apresentação em uma experiência única,
   garantindo a conexão perfeita com todos os tipos de público.
+
 agenda:
   - data: 30 JAN
     cidade: Recife / PE
@@ -24,6 +29,7 @@ agenda:
   - data: 01 FEV
     cidade: Camaragibe-PE
     local: FINEPE
+
 videos_destaque:
   - arquivo_webm: vídeos/video01.webm
     arquivo_mp4: vídeos/video01.mp4
@@ -55,10 +61,10 @@ videos_destaque:
   <meta property="og:image" content="{{ page.imagens.foto_seo }}" />
   <meta property="og:locale" content="pt_BR" />
 
-  <link rel="icon" type="image/png" href="imagens/icone.png" />
-  <link rel="apple-touch-icon" href="imagens/icone.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="imagens/icone.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="imagens/icone.png" />
+  <link rel="icon" type="image/png" href="{{ page.imagens.favicon }}" />
+  <link rel="apple-touch-icon" href="{{ page.imagens.favicon }}" />
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ page.imagens.favicon }}" />
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ page.imagens.favicon }}" />
    
   <link rel="stylesheet" href="style.css" />
 
@@ -68,7 +74,7 @@ videos_destaque:
     "@type": "MusicGroup",
     "name": "Tarcísio Lima",
     "url": "https://www.tarcisiolima.com.br/",
-    "logo": "https://www.tarcisiolima.com.br/imagens/icone.png",
+    "logo": "https://www.tarcisiolima.com.br/{{ page.imagens.favicon }}",
     "image": "https://www.tarcisiolima.com.br/{{ page.imagens.foto_seo }}",
     "description": "Cantor e compositor brasileiro. Confira a agenda de shows e lançamentos.",
     "sameAs": [
@@ -99,7 +105,7 @@ videos_destaque:
       </button>
    
       <a href="index.html" class="logo-topo">
-        <img src="imagens/logo.png" alt="Tarcísio Lima" />
+        <img src="{{ page.imagens.logo_topo }}" alt="Tarcísio Lima" />
       </a>
    
       <nav class="menu-topo" id="menuTopo">
