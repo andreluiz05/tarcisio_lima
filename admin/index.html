@@ -6,18 +6,30 @@
     <title>Painel Administrativo - Tarcísio Lima</title>
     <link rel="icon" type="image/png" href="/imagens/icone.png">
 
-    <script>
-      // Grava na memória do navegador o endereço correto
-      localStorage.setItem("netlifySiteURL", "https://tarcisio-lima.netlify.app");
-      
-      // Cria uma variável global que alguns widgets usam
-      window.netlifySiteURL = "https://tarcisio-lima.netlify.app";
-    </script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   
   <body>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <script>
+      // 1. Força o endereço na memória (Backup)
+      localStorage.setItem("netlifySiteURL", "https://tarcisio-lima.netlify.app");
+
+      // 2. Inicializa o Widget de Login apontando para o servidor certo
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init({
+          APIUrl: "https://tarcisio-lima.netlify.app/.netlify/identity"
+        });
+      }
+
+      // 3. Ouve o login para redirecionar de volta ao admin
+      netlifyIdentity.on('login', user => {
+        console.log('Login realizado!', user);
+        netlifyIdentity.close(); // Fecha o modal
+        // Recarrega a página para o CMS pegar o token
+        window.location.reload(); 
+      });
+    </script>
   </body>
 </html>
