@@ -9,7 +9,7 @@ tema_cor_cards: '#18191b'
 tema_cor_texto: '#ffffff'
 tema_cor_destaque: '#e6d37a'
 tema_fonte_titulos: Playfair Display
-tema_fonte_texto:
+tema_fonte_texto: Inter
 imagens:
   capa_desktop: imagens/capa-desktop.jpg
   capa_mobile: imagens/capa-mobile.jpg
@@ -105,7 +105,7 @@ _inputs:
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -119,17 +119,20 @@ _inputs:
   <meta property="og:url" content="https://www.tarcisiolima.com.br/" />
   <meta property="og:title" content="Tarcísio Lima | Site Oficial" />
   <meta property="og:description" content="Confira a agenda, vídeos e contrate o show de Tarcísio Lima." />
+  
+  <meta property="og:site_name" content="Tarcísio Lima" />
+
   <meta property="og:image" content="https://www.tarcisiolima.com.br{{ page.imagens.foto_seo }}" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:locale" content="pt_BR" />
 
   <link rel="icon" type="image/png" href="{{ page.imagens.favicon }}" />
   <link rel="apple-touch-icon" href="{{ page.imagens.favicon }}" />
   <link rel="icon" type="image/png" sizes="192x192" href="{{ page.imagens.favicon }}" />
   <link rel="icon" type="image/png" sizes="512x512" href="{{ page.imagens.favicon }}" />
-   
+
   <link rel="stylesheet" href="style.css" />
 
   <style>
@@ -156,6 +159,16 @@ _inputs:
     "location": { "@type": "Place", "name": "Brasil" }
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tarcísio Lima",
+    "url": "https://www.tarcisiolima.com.br/",
+    "alternateName": ["Tarcísio Lima Cantor", "TL Oficial"]
+  }
+  </script>
 </head>
 
 <body>
@@ -163,7 +176,7 @@ _inputs:
   <a href="https://api.whatsapp.com/send?phone={{ page.whatsapp_numero }}&text={{ page.whatsapp_mensagem_ola }}" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
     <img src="./imagens/whatsapp.png" alt="WhatsApp Tarcísio Lima" />
   </a>
-   
+
   <div id="fundoEscuro"></div>
 
   <header class="barra-topo">
@@ -180,7 +193,7 @@ _inputs:
       </nav>
     </div>
   </header>
-   
+
   <main>
     <section class="capa" id="inicio">
       <picture>
@@ -257,7 +270,7 @@ _inputs:
     const menu = document.getElementById('menuTopo');
     const fundo = document.getElementById('fundoEscuro');
     const menuLinks = document.querySelectorAll('.menu-topo a');
-    
+
     function toggleMenu() {
       menu.classList.toggle('ativo');
       fundo.classList.toggle('ativo');
@@ -271,7 +284,7 @@ _inputs:
     const btnNext = document.querySelector('.next');
     const btnPrev = document.querySelector('.prev');
     let posicao = 0;
-    
+
     function getCardWidth() {
         const card = document.querySelector('.agenda-card');
         if (!card) return 0;
@@ -297,7 +310,7 @@ _inputs:
         track.style.transform = `translateX(-${posicao}px)`;
       }
     };
-    
+
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
     elementosParaAnimar.forEach(el => el.classList.add('js-scroll'));
     const observer = new IntersectionObserver((entries) => {
@@ -311,4 +324,5 @@ _inputs:
     elementosParaAnimar.forEach((el) => observer.observe(el));
   </script>
 </body>
-</html>
+    </html>
+    
