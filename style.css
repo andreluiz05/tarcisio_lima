@@ -710,7 +710,16 @@ h1, h2, h3 {
     line-height: 0;
   }
   
-  .agenda-btn.prev { left: 0; }
-  .agenda-btn.next { right: 0; }
-  .agenda-btn:focus { outline: none; }
-}
+/* --- TRAVA A SETA (Para não sumir no clique) --- */
+  .agenda-btn:active, 
+  .agenda-btn:focus, 
+  .agenda-btn:hover {
+    opacity: 1 !important; /* Obriga a ficar 100% visível sempre */
+    transform: translateY(-50%) !important; /* Mantém a posição fixa, sem encolher */
+    background: transparent !important;
+    color: var(--accent) !important;
+    
+    /* Remove o "pisca" azul ou cinza padrão do celular */
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+  }
