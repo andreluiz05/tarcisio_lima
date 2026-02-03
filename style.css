@@ -607,87 +607,114 @@ h1, h2, h3 {
 }
 
 /* ========================================= */
-/* 📱 MOBILE: AGENDA VERTICAL (Estilo Zé Neto) */
+/* 📱 MOBILE: AGENDA VERTICAL + ANIMAÇÃO (Estilo Zé Neto) */
 /* ========================================= */
 @media (max-width: 768px) {
   
+  /* Ajuste de Espaçamento */
   .agenda {
     padding: 40px 0;
   }
 
-  /* Janela de visualização (Mask) */
-  .agenda-wrapper {
-    height: 550px; /* Altura da lista visível */
-    overflow: hidden;
-    position: relative;
-    /* Fade no topo e embaixo */
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  /* Título da seção no mobile */
+  .agenda h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
   }
 
-  /* Trilho Vertical Animado */
+  /* --- A MÁGICA DO LOOP VERTICAL --- */
+  /* Cria uma "janela" fixa onde os shows passam */
+  .agenda-wrapper {
+    height: 500px; /* Altura da área visível no celular */
+    overflow: hidden; /* Esconde o que sai da área */
+    position: relative;
+    padding: 0;
+    
+    /* Cria um fade (degrade) no topo e embaixo para suavizar a passagem */
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  }
+
+  /* O trilho que se move */
   .agenda-track {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Obriga a ser Vertical (um embaixo do outro) */
     gap: 0;
+    width: 100%;
+    
+    /* Desativa qualquer posição manual do desktop */
     transform: none !important; 
-    animation: scrollVertical 20s linear infinite; 
+    
+    /* Ativa a animação de subir infinito */
+    animation: scrollVertical 15s linear infinite; 
   }
 
-  /* Pausa ao tocar */
-  .agenda-track:hover, .agenda-track:active {
+  /* Pausa a animação quando toca o dedo */
+  .agenda-track:hover, .agenda-track:active, .agenda-wrapper:active .agenda-track {
     animation-play-state: paused;
   }
 
-  /* Esconde setas */
+  /* Esconde setas de navegação no mobile (já que roda sozinho) */
   .agenda-btn { display: none !important; }
 
-  /* --- ESTILO DO CARD --- */
+
+  /* --- VISUAL DOS CARDS (Estilo Zé Neto) --- */
   .agenda-card {
-    min-width: 100%;
-    background: transparent;
+    min-width: 100%; /* Ocupa a largura toda */
+    height: auto;
+    background: transparent; /* Sem fundo */
     border: none;
-    border-radius: 0;
     box-shadow: none;
-    padding: 50px 20px;
-    text-align: center;
+    padding: 40px 20px; /* Espaço generoso entre os textos */
+    
+    /* Centraliza tudo */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Linha divisória sutil */
-    border-bottom: 1px solid rgba(230, 211, 122, 0.15);
+    text-align: center;
+    
+    /* Linha divisória fina e dourada embaixo de cada show */
+    border-bottom: 1px solid rgba(230, 211, 122, 0.2);
   }
 
   /* Data Gigante */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
-    font-size: 3.8rem;
+    font-size: 3.5rem; /* Fonte enorme */
+    font-weight: 700;
+    color: var(--accent); /* Dourado */
     line-height: 1;
     margin-bottom: 10px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
   }
 
   /* Cidade */
   .agenda-card h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
     margin-bottom: 5px;
   }
 
   /* Local */
   .agenda-card p {
-    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
     text-transform: uppercase;
     letter-spacing: 2px;
-    opacity: 0.7;
-    margin-bottom: 0; /* Removi a margem extra do botão */
+    margin: 0;
   }
 }
 
-/* Animação */
+/* --- A ANIMAÇÃO (Keyframes) --- */
 @keyframes scrollVertical {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); } 
+  /* Ajuste: Se tiver poucos shows, a animação pode dar um pulo.
+     O ideal para "loop infinito perfeito" é duplicar os shows no HTML.
+     Mas isso aqui já cria o efeito de "subir créditos". */
+  100% { transform: translateY(-60%); } 
 }
