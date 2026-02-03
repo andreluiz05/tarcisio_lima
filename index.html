@@ -270,8 +270,10 @@ _inputs:
   <footer class="rodape">
     <p>&copy; 2026 Tarcísio Lima. Todos os direitos reservados</p>
   </footer>
-
-  <script>
+<script>
+    // ======================================================
+    // 1. MENU MOBILE (SEU CÓDIGO ORIGINAL - MANTIDO)
+    // ======================================================
     const btn = document.getElementById('btnMenu');
     const menu = document.getElementById('menuTopo');
     const fundo = document.getElementById('fundoEscuro');
@@ -286,56 +288,107 @@ _inputs:
     fundo.onclick = toggleMenu;
     menuLinks.forEach(link => { link.onclick = () => { if(menu.classList.contains('ativo')) toggleMenu(); }; });
 
+
+    // ======================================================
+    // 2. AGENDA INTELIGENTE (ATUALIZADO PARA LOOP INFINITO)
+    // ======================================================
     const track = document.querySelector('.agenda-track');
     const btnNext = document.querySelector('.next');
     const btnPrev = document.querySelector('.prev');
+    const wrapper = document.querySelector('.agenda-wrapper');
+    
     let posicao = 0;
+    let autoPlayTimer;
+    let isPaused = false; 
 
-  function getCardWidth() {
+    // Calcula largura (Corrige o "Troncho" no Mobile)
+    function getCardWidth() {
         const card = document.querySelector('.agenda-card');
         if (!card) return 0;
         
-        // CORREÇÃO: No mobile, não existe margem. O gap é 0.
-        // Se a tela for menor que 768px, retornamos apenas a largura do card (100vw).
+        // Mobile: Largura total da tela
         if (window.innerWidth <= 768) {
-            return card.offsetWidth;
+            return window.innerWidth;
         }
-
-        // No Desktop, mantemos o cálculo antigo com margem
+        // Desktop: Largura do card + margem lateral
         const style = window.getComputedStyle(card);
         const margin = parseFloat(style.marginRight) || 20;
         return card.offsetWidth + margin;
     }
-    
-    btnNext.onclick = function () {
-      if (!track) return;
-      const cardWidth = getCardWidth();
-      if (cardWidth === 0) return;
-      
-      // Ajuste para garantir que não role além do limite
-      const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-      
-      if (posicao < maxScroll - 5) { // -5 é uma margem de segurança para arredondamentos
-        posicao += cardWidth;
-        track.style.transform = `translateX(-${posicao}px)`;
-      } else {
-        // Opcional: Loop Infinito (Volta pro começo)
-        posicao = 0;
-        track.style.transform = `translateX(0px)`;
-      }
-    };
 
-    btnPrev.onclick = function () {
-      const cardWidth = getCardWidth();
-      if (posicao > 0) {
-        posicao -= cardWidth;
-        if (posicao < 0) posicao = 0;
-        track.style.transform = `translateX(-${posicao}px)`;
-      }
-    };
+    // Função Unificada de Movimento
+    function mover(direcao) {
+        if (!track) return;
+        const cardWidth = getCardWidth();
+        const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
 
+        if (direcao === 'proximo') {
+            // LOOP: Se chegar no fim, volta para o 0
+            if (posicao < maxScroll - 10) {
+                posicao += cardWidth;
+            } else {
+                posicao = 0; 
+            }
+        } else {
+            // Volta normal
+            if (posicao > 0) {
+                posicao -= cardWidth;
+            } 
+            if (posicao < 0) posicao = 0;
+        }
+        track.style.transform = `translateX(-${posicao}px)`;
+    }
+
+   // Robô Automático (SÓ PARA CELULAR)
+    function iniciarAutoPlay() {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(() => {
+            // Verifica se é celular (tela menor que 768px)
+            const isMobile = window.innerWidth <= 768;
+
+            // Só roda se for Mobile E não estiver pausado
+            if (isMobile && !isPaused) {
+                mover('proximo');
+            }
+        }, 4000); 
+    }
+
+    // Pausa Inteligente (Espera 6s se o usuário mexer)
+    function resetarTimerInteligente() {
+        isPaused = true; 
+        clearInterval(autoPlayTimer); 
+        setTimeout(() => {
+            isPaused = false;
+            iniciarAutoPlay();
+        }, 6000); 
+    }
+
+    // Inicia tudo
+    iniciarAutoPlay();
+
+    // Eventos dos Botões
+    if(btnNext) {
+        btnNext.onclick = () => { mover('proximo'); resetarTimerInteligente(); };
+    }
+    if(btnPrev) {
+        btnPrev.onclick = () => { mover('anterior'); resetarTimerInteligente(); };
+    }
+
+    // Eventos de Toque (Pausa para leitura)
+    if(wrapper) {
+        wrapper.addEventListener('touchstart', () => { isPaused = true; });
+        wrapper.addEventListener('touchend', resetarTimerInteligente);
+        wrapper.addEventListener('mouseenter', () => { isPaused = true; });
+        wrapper.addEventListener('mouseleave', resetarTimerInteligente);
+    }
+
+
+    // ======================================================
+    // 3. ANIMAÇÕES JS-SCROLL (SEU CÓDIGO ORIGINAL - MANTIDO)
+    // ======================================================
     const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
     elementosParaAnimar.forEach(el => el.classList.add('js-scroll'));
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
@@ -343,9 +396,11 @@ _inputs:
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -50px 0px" }); // Seus parâmetros originais
+    
     elementosParaAnimar.forEach((el) => observer.observe(el));
-  </script>
+</script>
+  
 </body>
     </html>
     
