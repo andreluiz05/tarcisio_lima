@@ -245,7 +245,7 @@ h1, h2, h3 {
   cursor: default;
 }
 .agenda-track:active {
-  cursor: grabbing;
+  cursor: default;
 }
 
 .agenda-card {
