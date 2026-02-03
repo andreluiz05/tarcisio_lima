@@ -605,3 +605,102 @@ h1, h2, h3 {
       background: transparent; 
   }
 }
+
+/* ========================================= */
+/* 📱 MOBILE: AGENDA VERTICAL (Estilo Zé Neto) */
+/* ========================================= */
+@media (max-width: 768px) {
+  
+  /* Ajuste da área da seção */
+  .agenda {
+    padding: 40px 0;
+  }
+
+  /* Janela de visualização (Mask) */
+  .agenda-wrapper {
+    height: 550px; /* Altura da lista visível */
+    overflow: hidden;
+    position: relative;
+    /* Efeito fade no topo e embaixo para suavizar */
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* Trilho Vertical Animado */
+  .agenda-track {
+    display: flex;
+    flex-direction: column; /* Um embaixo do outro */
+    gap: 0;
+    transform: none !important; /* Desliga o script do desktop */
+    animation: scrollVertical 20s linear infinite; /* Rola sozinho */
+  }
+
+  /* Pausa ao tocar na tela */
+  .agenda-track:hover, .agenda-track:active {
+    animation-play-state: paused;
+  }
+
+  /* Esconde as setas no mobile */
+  .agenda-btn { display: none !important; }
+
+  /* --- ESTILO DO CARD --- */
+  .agenda-card {
+    min-width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Linha divisória sutil */
+    border-bottom: 1px solid rgba(230, 211, 122, 0.15);
+  }
+
+  /* Data Gigante (Playfair) */
+  .agenda-card .data {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  }
+
+  /* Cidade e Local */
+  .agenda-card h3 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .agenda-card p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 25px;
+  }
+
+  /* Botão "SAIBA MAIS" (Visual) */
+  .agenda-card::after {
+    content: "SAIBA MAIS";
+    display: inline-block;
+    padding: 10px 30px;
+    background: rgba(230, 211, 122, 0.05);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+}
+
+/* Animação de Rolagem Infinita */
+@keyframes scrollVertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } 
+}
