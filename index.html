@@ -311,12 +311,20 @@ _inputs:
       if (!track) return;
       const cardWidth = getCardWidth();
       if (cardWidth === 0) return;
+      
+      // Ajuste para garantir que não role além do limite
       const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-      if (posicao < maxScroll) {
+      
+      if (posicao < maxScroll - 5) { // -5 é uma margem de segurança para arredondamentos
         posicao += cardWidth;
         track.style.transform = `translateX(-${posicao}px)`;
+      } else {
+        // Opcional: Loop Infinito (Volta pro começo)
+        posicao = 0;
+        track.style.transform = `translateX(0px)`;
       }
     };
+
     btnPrev.onclick = function () {
       const cardWidth = getCardWidth();
       if (posicao > 0) {
