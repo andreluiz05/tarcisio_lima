@@ -611,7 +611,6 @@ h1, h2, h3 {
 /* ========================================= */
 @media (max-width: 768px) {
   
-  /* Ajuste da área da seção */
   .agenda {
     padding: 40px 0;
   }
@@ -621,7 +620,7 @@ h1, h2, h3 {
     height: 550px; /* Altura da lista visível */
     overflow: hidden;
     position: relative;
-    /* Efeito fade no topo e embaixo para suavizar */
+    /* Fade no topo e embaixo */
     mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
   }
@@ -629,18 +628,18 @@ h1, h2, h3 {
   /* Trilho Vertical Animado */
   .agenda-track {
     display: flex;
-    flex-direction: column; /* Um embaixo do outro */
+    flex-direction: column; 
     gap: 0;
-    transform: none !important; /* Desliga o script do desktop */
-    animation: scrollVertical 20s linear infinite; /* Rola sozinho */
+    transform: none !important; 
+    animation: scrollVertical 20s linear infinite; 
   }
 
-  /* Pausa ao tocar na tela */
+  /* Pausa ao tocar */
   .agenda-track:hover, .agenda-track:active {
     animation-play-state: paused;
   }
 
-  /* Esconde as setas no mobile */
+  /* Esconde setas */
   .agenda-btn { display: none !important; }
 
   /* --- ESTILO DO CARD --- */
@@ -660,7 +659,7 @@ h1, h2, h3 {
     border-bottom: 1px solid rgba(230, 211, 122, 0.15);
   }
 
-  /* Data Gigante (Playfair) */
+  /* Data Gigante */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
     font-size: 3.8rem;
@@ -669,37 +668,25 @@ h1, h2, h3 {
     text-shadow: 0 4px 15px rgba(0,0,0,0.6);
   }
 
-  /* Cidade e Local */
+  /* Cidade */
   .agenda-card h3 {
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 5px;
   }
+
+  /* Local */
   .agenda-card p {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity: 0.7;
-    margin-bottom: 25px;
-  }
-
-  /* Botão "SAIBA MAIS" (Visual) */
-  .agenda-card::after {
-    content: "SAIBA MAIS";
-    display: inline-block;
-    padding: 10px 30px;
-    background: rgba(230, 211, 122, 0.05);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+    margin-bottom: 0; /* Removi a margem extra do botão */
   }
 }
 
-/* Animação de Rolagem Infinita */
+/* Animação */
 @keyframes scrollVertical {
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); } 
