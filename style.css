@@ -605,68 +605,61 @@ h1, h2, h3 {
       background: transparent; 
   }
 }
-
 /* ========================================= */
-/* 📱 MOBILE: AGENDA ZÉ NETO (CORREÇÃO FINAL) */
+/* 📱 MOBILE: CORREÇÃO DEFINITIVA (Zé Neto) */
 /* ========================================= */
 @media (max-width: 768px) {
   
   .agenda {
-    padding: 0; /* Remove padding extra pra aproveitar espaço */
+    padding: 0; 
   }
 
-  /* 1. JANELA (WRAPPER) */
+  /* --- O VILÃO ESTAVA AQUI: O WRAPPER --- */
   .agenda-wrapper {
-    /* Altura fixa para caber os 3 cards verticalmente */
-    height: 550px; 
+    /* Removemos o padding de 70px do desktop que empurrava tudo */
+    padding: 0 !important; 
     width: 100%;
+    height: 550px; 
     position: relative;
     overflow: hidden;
   }
 
-  /* 2. O TRILHO (GRID DE 3 LINHAS) */
+  /* O TRILHO (GRID) */
   .agenda-track {
     display: grid;
-    /* Divide em 3 linhas de altura igual */
     grid-template-rows: repeat(3, 1fr); 
-    /* Preenche a coluna inteira (3 itens) antes de ir pro lado */
     grid-auto-flow: column; 
-    
     gap: 0;
-    width: max-content; /* Deixa crescer para o lado */
-    
-    /* Mantém a transição suave do JavaScript */
+    width: max-content; 
     transition: transform 0.5s ease-in-out;
+    padding: 0; /* Garante que o trilho não tenha folga */
   }
 
-  /* 3. O CARD (SHOW) */
+  /* O CARD (SHOW) */
   .agenda-card {
-    /* A largura é EXATAMENTE a largura da tela */
-    width: 100vw; 
-    /* A altura é 100% da linha do grid (1/3 da tela) */
+    width: 100vw; /* Largura TOTAL da tela */
     height: 100%; 
     
-    /* CENTRALIZAÇÃO ABSOLUTA */
+    /* Centralização Absoluta */
     display: flex;
     flex-direction: column;
-    align-items: center;     /* Centraliza horizontal */
-    justify-content: center; /* Centraliza vertical */
-    text-align: center;      /* Garante texto no meio */
+    align-items: center;    
+    justify-content: center;
+    text-align: center;     
     
     background: transparent;
     border: none;
-    /* Linha divisória fina */
     border-bottom: 1px solid rgba(230, 211, 122, 0.2); 
     box-sizing: border-box;
-    padding: 0 40px; /* Margem lateral para o texto não encostar nas setas */
+    padding: 0 45px; /* Margem interna para o texto não bater nas setas */
+    margin: 0; /* Remove qualquer margem externa */
   }
   
-  /* Remove linha do 3º item de cada coluna (visual limpo) */
   .agenda-card:nth-child(3n) {
     border-bottom: none; 
   }
 
-  /* --- TIPOGRAFIA --- */
+  /* TIPOGRAFIA */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
@@ -682,7 +675,6 @@ h1, h2, h3 {
     text-transform: uppercase;
     color: #fff;
     margin-bottom: 2px;
-    letter-spacing: 1px;
   }
 
   .agenda-card p {
@@ -693,36 +685,32 @@ h1, h2, h3 {
     margin: 0;
   }
 
-  /* --- SETAS "LIMPAS" (IGUAL ZÉ NETO) --- */
+  /* SETAS LIMPAS (SEM BOLINHA) */
   .agenda-btn {
     display: flex !important;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Centraliza verticalmente */
+    transform: translateY(-50%);
     z-index: 50;
     
-    /* REMOVE A BOLINHA/FUNDO */
+    /* ZERA TOTALMENTE O FUNDO */
     background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
     border-radius: 0 !important;
     width: auto !important;
     height: auto !important;
-    box-shadow: none !important;
     
-    /* ESTILO DA SETA (Texto Grande) */
-    color: var(--accent); /* Cor Dourada */
-    font-size: 3.5rem;    /* Tamanho Grande */
-    font-family: 'Inter', sans-serif; /* Fonte fina e limpa */
-    font-weight: 300;     /* Deixa a seta mais fina/elegante */
-    padding: 0 5px;
+    /* ESTILO DO ÍCONE */
+    color: var(--accent);
+    font-size: 4rem; /* Seta bem grande e fina */
+    font-weight: 100; /* Deixa o desenho da seta mais fino */
+    padding: 0 10px;
     cursor: pointer;
-    opacity: 0.8;
+    line-height: 0;
   }
   
-  /* Posicionamento nas pontas */
   .agenda-btn.prev { left: 0; }
   .agenda-btn.next { right: 0; }
-  
-  /* Remove qualquer estilo padrão de foco */
   .agenda-btn:focus { outline: none; }
 }
