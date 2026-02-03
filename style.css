@@ -607,7 +607,7 @@ h1, h2, h3 {
 }
 
 /* ========================================= */
-/* 📱 MOBILE: CARROSSEL HORIZONTAL (Visual Zé Neto - 3 por tela) */
+/* 📱 MOBILE: CARROSSEL "PÁGINA DE 3" (Visual Zé Neto) */
 /* ========================================= */
 @media (max-width: 768px) {
   
@@ -615,82 +615,93 @@ h1, h2, h3 {
     padding: 30px 0;
   }
 
-  /* O Container precisa ocupar a tela toda para a conta funcionar */
+  /* 1. O Container da Janela */
   .agenda-wrapper {
     width: 100%;
-    padding: 0;
-    margin: 0;
+    /* Define a altura exata para caber 3 cards de 160px cada + espaços */
+    height: 500px; 
+    overflow: hidden; /* Esconde o que está nas laterais */
   }
 
-  /* O Trilho volta a ser HORIZONTAL para o JS funcionar */
+  /* 2. O Trilho (A Mágica do Grid) */
   .agenda-track {
-    display: flex;
-    flex-direction: row; /* Um ao lado do outro */
+    display: grid;
+    /* Força exatas 3 linhas de altura igual */
+    grid-template-rows: repeat(3, 1fr); 
+    /* Preenche de cima pra baixo, depois cria nova coluna ao lado */
+    grid-auto-flow: column; 
+    
     gap: 0;
-    /* IMPORTANTE: Removemos o 'transform: none' que travava o JS */
+    width: max-content; /* Deixa crescer para o lado o quanto precisar */
+    
+    /* IMPORTANTE: Mantém o JS funcionando para mover p/ lado */
+    transition: transform 0.5s ease-in-out; 
   }
 
-  /* --- O CARD (A MÁGICA ACONTECE AQUI) --- */
+  /* 3. O Card (Show) */
   .agenda-card {
-    /* CÁLCULO EXATO: Divide a largura da tela (100vw) por 3. 
-       Assim cabem sempre 3 cards certinho. */
-    width: calc(100vw / 3); 
-    min-width: unset; /* Remove limite mínimo do desktop */
-    box-sizing: border-box; /* Garante que a borda não aumente o tamanho */
+    /* Largura = Largura da Tela (para ocupar a coluna toda) */
+    width: 100vw; 
+    /* Altura = Automática (o Grid já divide em 3 pedaços iguais) */
+    height: 100%; 
     
     /* Visual Zé Neto */
     background: transparent;
     border: none;
-    border-right: 1px solid rgba(230, 211, 122, 0.3); /* Linha divisória vertical forte */
+    border-bottom: 1px solid rgba(230, 211, 122, 0.2); /* Linha divisória */
+    box-sizing: border-box; /* Borda não aumenta tamanho */
     
-    /* Layout interno VERTICAL (Data em cima da cidade) */
+    /* Centraliza Conteúdo */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 5px; /* Padding reduzido nas laterais para caber o texto */
-    height: auto; /* Altura automática baseada no conteúdo */
+    padding: 10px;
+  }
+  
+  /* Remove a borda do 3º, 6º, 9º item... (Opcional, visual clean) */
+  .agenda-card:nth-child(3n) {
+    border-bottom: none; 
   }
 
-  /* Ajuste das Fontes para caber em 1/3 da tela */
+  /* --- TIPOGRAFIA (Estilo Zé Neto) --- */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem; /* Um pouco menor para não quebrar */
+    font-size: 2.2rem; /* Grande, mas que cabe */
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.5);
   }
-  
+
   .agenda-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem; /* Cidade menor */
+    font-size: 1.2rem;
     text-transform: uppercase;
     color: #fff;
-    letter-spacing: 0.5px;
     margin-bottom: 2px;
-    white-space: nowrap; /* Evita quebra de linha na cidade se possível */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 95%;
   }
-  
+
   .agenda-card p {
-    font-size: 0.7rem; /* Local bem pequeno */
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     opacity: 0.7;
     margin: 0;
   }
 
-  /* --- REATIVA AS SETAS --- */
+  /* --- SETAS REATIVADAS --- */
   .agenda-btn {
-    display: flex !important; /* Garante que apareçam */
-    width: 35px; /* Um pouco menores no mobile */
-    height: 35px;
-    font-size: 18px;
-    background: rgba(0,0,0,0.8); /* Fundo mais escuro para contraste */
+    display: flex !important;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    background: rgba(0,0,0,0.6);
+    /* Centraliza verticalmente na tela inteira */
+    top: 50%; 
+    transform: translateY(-50%);
   }
-  .agenda-btn.prev { left: 5px; }
-  .agenda-btn.next { right: 5px; }
+  .agenda-btn.prev { left: 10px; }
+  .agenda-btn.next { right: 10px; }
 }
