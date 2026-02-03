@@ -607,67 +607,76 @@ h1, h2, h3 {
 }
 
 /* ========================================= */
-/* 📱 MOBILE: CARROSSEL "PÁGINA DE 3" (Visual Zé Neto) */
+/* 📱 MOBILE: CARROSSEL "VAI E VOLTA" (3 SHOWS) */
 /* ========================================= */
 @media (max-width: 768px) {
   
   .agenda {
-    padding: 30px 0;
+    padding: 20px 0;
+    overflow: hidden; /* Garante que não quebre o layout do site */
   }
 
   /* 1. O Container da Janela */
   .agenda-wrapper {
     width: 100%;
-    /* Define a altura exata para caber 3 cards de 160px cada + espaços */
-    height: 500px; 
-    overflow: hidden; /* Esconde o que está nas laterais */
+    height: 520px; /* Altura ajustada para 3 cards */
+    overflow: hidden; 
+    position: relative;
   }
 
-  /* 2. O Trilho (A Mágica do Grid) */
+  /* 2. O Trilho (Com animação automática) */
   .agenda-track {
     display: grid;
-    /* Força exatas 3 linhas de altura igual */
+    /* Força 3 linhas iguais (3 shows na vertical) */
     grid-template-rows: repeat(3, 1fr); 
-    /* Preenche de cima pra baixo, depois cria nova coluna ao lado */
+    /* Preenche colunas automaticamente */
     grid-auto-flow: column; 
-    
     gap: 0;
-    width: max-content; /* Deixa crescer para o lado o quanto precisar */
     
-    /* IMPORTANTE: Mantém o JS funcionando para mover p/ lado */
-    transition: transform 0.5s ease-in-out; 
+    width: max-content; /* A largura se ajusta ao conteúdo */
+    
+    /* A MÁGICA DO LOOP SUAVE */
+    /* 15s de duração, vai e volta (alternate), infinito */
+    animation: vaiEvolta 20s ease-in-out infinite alternate;
+    
+    /* Desativa interferência do JS no mobile para a animação rodar liso */
+    transform: none !important; 
   }
 
-  /* 3. O Card (Show) */
+  /* Pausa a animação se a pessoa tocar na tela (pra ler com calma) */
+  .agenda-track:hover, .agenda-track:active {
+    animation-play-state: paused;
+  }
+
+  /* 3. O Card (Centralizado) */
   .agenda-card {
-    /* Largura = Largura da Tela (para ocupar a coluna toda) */
+    /* Ocupa a largura total da tela para centralizar perfeito */
     width: 100vw; 
-    /* Altura = Automática (o Grid já divide em 3 pedaços iguais) */
     height: 100%; 
     
-    /* Visual Zé Neto */
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(230, 211, 122, 0.2); /* Linha divisória */
-    box-sizing: border-box; /* Borda não aumenta tamanho */
+    border-bottom: 1px solid rgba(230, 211, 122, 0.2);
+    box-sizing: border-box;
     
-    /* Centraliza Conteúdo */
+    /* CENTRALIZAÇÃO TOTAL */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+    align-items: center;  /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Garante que o texto fique no meio */
+    padding: 0 10px;
   }
   
-  /* Remove a borda do 3º, 6º, 9º item... (Opcional, visual clean) */
+  /* Remove borda dos múltiplos de 3 para visual limpo */
   .agenda-card:nth-child(3n) {
     border-bottom: none; 
   }
 
-  /* --- TIPOGRAFIA (Estilo Zé Neto) --- */
+  /* --- TIPOGRAFIA --- */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem; /* Grande, mas que cabe */
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
@@ -691,17 +700,20 @@ h1, h2, h3 {
     margin: 0;
   }
 
-  /* --- SETAS REATIVADAS --- */
+  /* Esconde as setas no mobile, pois a animação é automática */
   .agenda-btn {
-    display: flex !important;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    background: rgba(0,0,0,0.6);
-    /* Centraliza verticalmente na tela inteira */
-    top: 50%; 
-    transform: translateY(-50%);
+    display: none !important;
   }
-  .agenda-btn.prev { left: 10px; }
-  .agenda-btn.next { right: 10px; }
+}
+
+/* --- A ANIMAÇÃO (KEYFRAMES) --- */
+@keyframes vaiEvolta {
+  0% {
+    transform: translateX(0); /* Começa no início */
+  }
+  100% {
+    /* Move para a esquerda para mostrar os outros shows.
+       Se tiver muitos shows e cortar o final, aumente para -70% ou -80% */
+    transform: translateX(-60%); 
+  }
 }
