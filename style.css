@@ -606,71 +606,75 @@ h1, h2, h3 {
   }
 }
 /* ========================================= */
-/* 📱 MOBILE: CARROSSEL ZÉ NETO (3 SHOWS POR PÁGINA) */
+/* 📱 MOBILE: AGENDA 3 SHOWS (CORRIGIDO) */
 /* ========================================= */
 @media (max-width: 768px) {
   
   .agenda {
     padding: 20px 0;
+    overflow: hidden; /* Evita rolagem lateral da página inteira */
   }
 
-  /* 1. JANELA DE VISUALIZAÇÃO */
+  /* 1. CONTAINER DA JANELA */
   .agenda-wrapper {
-    /* Altura fixa suficiente para 3 cards (ajuste se cortar o texto) */
+    /* Altura para caber 3 shows (ajuste se cortar o texto) */
     height: 520px; 
     width: 100%;
-    overflow: hidden; 
     position: relative;
+    /* Centraliza o conteúdo dentro dele */
+    display: flex;
+    justify-content: center;
   }
 
-  /* 2. O TRILHO (GRID MÁGICO) */
+  /* 2. O TRILHO (GRID) */
   .agenda-track {
     display: grid;
-    /* Força EXATAMENTE 3 linhas iguais de altura */
-    grid-template-rows: repeat(3, 1fr);
-    /* Preenche de cima pra baixo, depois cria nova coluna ao lado */
+    /* 3 Linhas iguais */
+    grid-template-rows: repeat(3, 1fr); 
+    /* Preenche coluna por coluna */
     grid-auto-flow: column; 
-    
     gap: 0;
-    width: max-content; /* Deixa crescer para o lado */
     
-    /* IMPORTANTE: Mantém o movimento do JavaScript funcionando */
+    /* Garante que o grid comece alinhado a esquerda */
+    width: max-content; 
+    
+    /* Movimento suave do JS */
     transition: transform 0.5s ease-in-out;
   }
 
   /* 3. O CARD (SHOW) */
   .agenda-card {
-    /* Largura TOTAL da tela (para centralizar perfeito) */
+    /* A largura é EXATAMENTE a largura da tela do celular */
     width: 100vw; 
-    height: 100%; /* Ocupa 1/3 da altura definido pelo Grid */
+    height: 100%; 
     
-    /* Centralização Absoluta */
+    /* Centralização Absoluta do Texto */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center;     /* Horizontal */
+    justify-content: center; /* Vertical */
     text-align: center;
     
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(230, 211, 122, 0.2); /* Linha Dourada */
+    border-bottom: 1px solid rgba(230, 211, 122, 0.2);
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 15px; /* Margem de segurança nas laterais */
   }
   
-  /* Remove a linha do 3º item da coluna para ficar limpo */
+  /* Remove linha do último da coluna */
   .agenda-card:nth-child(3n) {
     border-bottom: none; 
   }
 
-  /* --- TIPOGRAFIA IGUAL ZÉ NETO --- */
+  /* --- TIPOGRAFIA --- */
   .agenda-card .data {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem; /* Fonte Grande */
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     text-shadow: 0 3px 10px rgba(0,0,0,0.5);
   }
 
@@ -679,7 +683,12 @@ h1, h2, h3 {
     font-size: 1.2rem;
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    /* Garante que a cidade não estoure a tela */
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .agenda-card p {
@@ -690,31 +699,42 @@ h1, h2, h3 {
     margin: 0;
   }
 
-  /* --- SETAS REATIVADAS --- */
+  /* --- SETAS "ZÉ NETO" (LIMPAS E GRANDES) --- */
   .agenda-btn {
-    display: flex !important; /* FORÇA A APARECER */
-    width: 45px;
-    height: 45px;
-    font-size: 24px;
-    background: transparent; /* Fundo transparente igual a foto */
-    color: var(--accent); /* Seta Dourada */
-    border: none;
-    
+    display: flex !important;
     position: absolute;
-    top: 50%; /* Centraliza na altura total */
-    transform: translateY(-50%);
-    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza vertical exato */
+    z-index: 50;
+    
+    /* Estilo Limpo (Sem quadrado) */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    
+    /* Fonte Grande e Dourada */
+    color: var(--accent);
+    font-size: 3rem; /* Seta bem grande */
+    line-height: 1;
+    padding: 0 10px;
+    cursor: pointer;
+    
+    /* Remove qualquer estilo padrão de botão */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  /* Seta Esquerda */
-  .agenda-btn.prev { 
-    left: 0px; 
-    justify-content: flex-start; /* Cola no canto */
+  /* Posicionamento Lateral */
+  .agenda-btn.prev {
+    left: 0;
+  }
+  .agenda-btn.next {
+    right: 0;
   }
   
-  /* Seta Direita */
-  .agenda-btn.next { 
-    right: 0px; 
-    justify-content: flex-end; /* Cola no canto */
+  /* Efeito de clique */
+  .agenda-btn:active {
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0.7;
   }
 }
