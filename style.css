@@ -242,7 +242,7 @@ h1, h2, h3 {
   display: flex;
   gap: 20px;
   transition: transform .5s cubic-bezier(0.25, 1, 0.5, 1);
-  cursor: grab; /* indica que pode arrastar */
+  cursor: default;
 }
 .agenda-track:active {
   cursor: grabbing;
