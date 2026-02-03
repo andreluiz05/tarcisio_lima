@@ -291,13 +291,22 @@ _inputs:
     const btnPrev = document.querySelector('.prev');
     let posicao = 0;
 
-    function getCardWidth() {
+  function getCardWidth() {
         const card = document.querySelector('.agenda-card');
         if (!card) return 0;
+        
+        // CORREÇÃO: No mobile, não existe margem. O gap é 0.
+        // Se a tela for menor que 768px, retornamos apenas a largura do card (100vw).
+        if (window.innerWidth <= 768) {
+            return card.offsetWidth;
+        }
+
+        // No Desktop, mantemos o cálculo antigo com margem
         const style = window.getComputedStyle(card);
         const margin = parseFloat(style.marginRight) || 20;
         return card.offsetWidth + margin;
     }
+    
     btnNext.onclick = function () {
       if (!track) return;
       const cardWidth = getCardWidth();
