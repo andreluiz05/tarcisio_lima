@@ -1,0 +1,623 @@
+/* ========================= */
+/* reset & variaveis         */
+/* ========================= */
+:root {
+  --bg-main: #050505;     /* preto profundo */
+  --bg-card: #121212;     /* cinza chumbo */
+  --text-main: #ffffff;
+  --text-soft: #b0b0b0;
+  --accent: #e6d37a;      /* dourado premium */
+  --shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden; /* evita rolagem lateral no mobile */
+  -webkit-font-smoothing: antialiased; /* deixa a fonte mais nitida no fundo preto */
+}
+
+/* titulos elegantes (playfair display) */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif; 
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ========================= */
+/* utilitarios (scroll/sel)  */
+/* ========================= */
+/* barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); 
+}
+
+/* cor da selecao de texto */
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+/* fundo escuro mobile (backdrop) */
+#fundoEscuro {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  z-index: 998;
+}
+#fundoEscuro.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ========================= */
+/* navbar                    */
+/* ========================= */
+.barra-topo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.85); /* um pouco mais escuro para contraste */
+  backdrop-filter: blur(12px);     /* blur mais forte estilo apple */
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  z-index: 1000;
+  padding: 10px 0; 
+  transition: background 0.3s ease;
+}
+
+.area-topo {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 60px;
+}
+
+/* logo */
+.logo-topo {
+  grid-column: 2;
+  justify-self: center;
+}
+.logo-topo img {
+  height: 45px; 
+  width: auto;
+  transition: transform .3s ease;
+  display: block;
+}
+.logo-topo img:hover {
+  transform: scale(1.05);
+}
+
+/* menu desktop */
+.menu-topo {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  gap: 30px;
+}
+.menu-topo a {
+  font-size: 13px; /* levemente menor para mais elegancia */
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-main);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+  padding: 5px 0;
+}
+.menu-topo a:hover {
+  color: var(--accent);
+}
+.menu-topo a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px; /* linha mais fina */
+  background: var(--accent);
+  transition: width .3s ease;
+}
+.menu-topo a:hover::after {
+  width: 100%;
+}
+
+/* botao hamburguer */
+.btn-menu {
+  display: none; 
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--accent); 
+  cursor: pointer;
+  z-index: 1002;
+  padding: 5px; /* area de toque maior */
+}
+
+/* ========================= */
+/* capa (hero section)       */
+/* ========================= */
+.capa {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  background: #000;
+  display: block;        
+  overflow: hidden;
+  margin-top: 80px;      
+  margin-bottom: 0px;  
+  min-height: auto; 
+  height: auto;
+}
+
+/* configura o 'picture' para ser a referencia do degrade */
+.capa picture {
+  display: block;
+  position: relative; /* o degrade vai se basear no tamanho da foto agora */
+  width: 100%;
+}
+
+/* o degrade e aplicado no picture, colado na imagem */
+.capa picture::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* fica no pe da foto, nao do container */
+  width: 100%;
+  height: 14%; /* altura do degrade */
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 55%,
+    rgba(0, 0, 0, 0.9) 95%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+.foto-capa {
+  width: 100%;
+  height: auto;       
+  object-fit: cover; 
+  display: block;     
+  object-position: top center;
+}
+
+/* ========================= */
+/* agenda                    */
+/* ========================= */
+.agenda {
+  padding: 90px 20px;
+  background: var(--bg-main);
+  text-align: center;
+}
+
+.agenda h2 {
+  font-size: 3rem; 
+  margin-bottom: 50px;
+  color: #fff;
+  letter-spacing: -1px; /* deixa o titulo mais compacto e moderno */
+}
+
+/* Design Premium Agenda Instagram */
+.agenda-premium-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #18191b, #0a0a0a);
+  border: 1px solid rgba(230, 211, 122, 0.15);
+  border-radius: 20px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.agenda-premium-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 211, 122, 0.4);
+}
+
+.agenda-premium-icon {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  background: rgba(230, 211, 122, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(230, 211, 122, 0.3);
+}
+
+.agenda-premium-icon img {
+  width: 60px;
+  opacity: 0.9;
+}
+
+.agenda-premium-info {
+  text-align: left;
+}
+
+.agenda-premium-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--accent);
+}
+
+.agenda-premium-info p {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.btn-instagram-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--text-main);
+  color: #000;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-instagram-premium:hover {
+  background: var(--accent);
+  box-shadow: 0 10px 25px rgba(230, 211, 122, 0.3);
+}
+
+.seta-btn {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-instagram-premium:hover .seta-btn {
+  transform: translateX(5px);
+}
+
+/* Responsividade do Card Premium */
+@media (max-width: 768px) {
+  .agenda-premium-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+  
+  .agenda-premium-info {
+    text-align: center;
+  }
+  
+  .agenda-premium-info h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ========================= */
+/* videos                    */
+/* ========================= */
+.videos {
+  padding: 100px 20px 100px 20px; 
+  background: #0a0a0a;
+}
+.videos h2 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 50px;
+}
+
+.area-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.area-videos video {
+  width: 100%; 
+  height: 530px; 
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #222;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.area-videos video:hover {
+  transform: scale(1.02); 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: #333;
+}
+
+/* ========================= */
+/* secao mista (sobre/contato) */
+/* ========================= */
+.secao-mista {
+  width: 100%;            
+  background: #000;       
+  border-top: 1px solid #111;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px;
+  gap: 80px;
+}
+
+/* --- lado esquerdo (sobre) --- */
+.sobre {
+  background: transparent;
+  padding: 0;
+  text-align: left;      
+}
+
+.sobre h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);       
+  color: var(--accent);    
+  margin-bottom: 30px;
+  line-height: 1.1;
+}
+
+.sobre p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #ccc;             
+  line-height: 1.8;
+  font-weight: 300;
+  text-align: left; 
+  margin: 0;
+}
+
+/* --- lado direito (contato) --- */
+.contato {
+  text-align: center;      
+  background: transparent;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contato h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  color: #fff;             
+  margin-bottom: 60px;     
+}
+
+.contato-redes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;               
+}
+
+.contato-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.contato-item img {
+  width: 65px;             
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); 
+}
+.contato-item span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+.contato-item:hover {
+  transform: translateY(-8px);
+}
+.contato-item:hover span {
+  color: var(--accent);
+}
+
+/* ========================= */
+/* elementos flutuantes      */
+/* ========================= */
+.whatsapp-fixo {
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+  z-index: 999;
+}
+.whatsapp-fixo img {
+  width: 110px; /* tamanho grande original */
+  cursor: pointer;
+  transition: transform .3s ease, filter .3s ease;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+.whatsapp-fixo img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+}
+.whatsapp-fixo img:active {
+  transform: scale(.95);
+}
+
+/* ========================= */
+/* rodape                    */
+/* ========================= */
+.rodape {
+  padding: 40px;
+  background: #000;
+  border-top: 1px solid #111;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ========================= */
+/* animacoes (js-scroll)     */
+/* ========================= */
+.js-scroll {
+  opacity: 0;
+  transform: translateY(40px); 
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: blur(4px); 
+  will-change: opacity, transform; 
+}
+
+.js-scroll.ativo {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion) {
+  .js-scroll {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* ========================= */
+/* media queries (responsivo)*/
+/* ========================= */
+
+
+
+/* mobile */
+@media (max-width: 768px) {
+  
+  /* ajuste do botao menu */
+  .btn-menu {
+    display: block;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  /* ajuste do menu lateral */
+  .menu-topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: #111;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transform: translateX(-100%);
+    transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 999;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    padding: 20px;
+    border-right: 1px solid #222;
+  }
+  .menu-topo.ativo {
+    transform: translateX(0); 
+  }
+  .menu-topo a {
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+  }
+
+  /* capa mobile */
+  .capa {
+    height: auto;     
+    min-height: auto;
+    padding-top: 0;    
+    margin-top: 80px;
+    padding-bottom: 50px;
+    display: block;    
+  }
+  /* degrade especifico mobile */
+  .capa::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0; 
+    width: 100%;
+    height: 60%; 
+    z-index: 2; 
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.3) 40%,
+      rgba(0,0,0,0.8) 70%,
+      #050505 100% 
+    );
+    pointer-events: none;
+  }
+  .foto-capa {
+    margin-bottom: 0;
+    width: 100%;
+    height: 450px;       
+    object-fit: cover;   
+    object-position: top center;
+  }
+
+  /* videos largura total */
+  .area-videos video {
+    width: 100%; 
+    height: auto;
+    aspect-ratio: 9/16; 
+  }
+  
+  /* redes sociais */
+  .contato-redes {
+    gap: 30px;
+    flex-direction: column;
+  }
+  .contato-item {
+      width: 100%;
+      background: transparent; 
+  }
+}

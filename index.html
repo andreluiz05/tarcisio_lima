@@ -1,110 +1,3 @@
----
-whatsapp_numero: '5581992192237'
-whatsapp_mensagem_ola: Olá, Tarcísio! Tenho interesse em contratar o seu show! 🎸🎼🎤
-whatsapp_mensagem_contato: 🎶Olá, Tarcísio! Gostaria de informações sobre shows e valores.
-email_contato: contato@tarcisiolima.com.br
-instagram_url: https://www.instagram.com/tarcisiolima_cantor/
-tema_cor_fundo: '#050505'
-tema_cor_cards: '#18191b'
-tema_cor_texto: '#ffffff'
-tema_cor_destaque: '#e6d37a'
-tema_fonte_titulos:
-tema_fonte_texto: Inter
-imagens:
-  capa_desktop: imagens/capa-desktop.jpg
-  capa_mobile: imagens/capa-mobile.jpg
-  foto_seo: /uploads/1000696570-1.png
-  logo_topo: imagens/logo.png
-  favicon: imagens/icone.png
-  icon_whatsapp: imagens/whatsapp1.png
-  icon_email: imagens/email.png
-  icon_instagram: imagens/instagram.png
-sobre_texto: >-
-  Tarcísio Lima é um cantor pernambucano reconhecido pela versatilidade, carisma
-  e energia no palco. Com um show dinâmico e envolvente, apresenta um repertório
-  que transita entre Forró, Brega, Sertanejo e MPB, garantindo conexão com
-  diferentes públicos e tipos de evento. Atuando em toda a Região Metropolitana
-  do Recife, com destaque para Igarassu-PE, sua cidade natal, Tarcísio Lima vem
-  se consolidando como artista na cena musical regional. Além da carreira solo,
-  é líder e cantor da Banda Católica Libertah, unindo musicalidade, mensagem e
-  propósito em suas apresentações.
-agenda:
-  - data: 13 FEV
-    cidade: Igarassu-PE
-    local: Bloco O Macho da Rapariga
-  - data: 14 FEV
-    cidade: ''
-    local: Bloco Galo em Casa || Ano IV
-  - data: 16 FEV
-    cidade: ''
-    local: Bloco Mela Mela
-  - data: 16 FEV
-    cidade: ''
-    local: Carnaval no Sítio (Evento Privado)
-  - data: 16 FEV
-    cidade: ''
-    local: Bloco Segura o Ovo
-videos_destaque:
-  - arquivo_webm: vídeos/video01.webm
-    arquivo_mp4: vídeos/video01.mp4
-  - arquivo_webm: vídeos/video02.webm
-    arquivo_mp4: vídeos/video02.mp4
-  - arquivo_webm: vídeos/video03.webm
-    arquivo_mp4: vídeos/video03.mp4
-_inputs:
-  tema_cor_fundo:
-    type: color
-    label: 🎨 Cor do Fundo
-  tema_cor_cards:
-    type: color
-    label: 🎨 Cor dos Cards
-  tema_cor_texto:
-    type: color
-    label: 🎨 Cor do Texto
-  tema_cor_destaque:
-    type: color
-    label: 🎨 Cor Destaque (Dourado)
-  tema_fonte_titulos:
-    type: select
-    label: ✒️ Fonte dos Títulos
-    options:
-      values:
-        - Playfair Display
-        - Inter
-        - Arial
-        - Courier New
-  tema_fonte_texto:
-    type: select
-    label: ✒️ Fonte do Texto
-    options:
-      values:
-        - Inter
-        - Playfair Display
-        - Arial
-        - Verdana
-  arquivo_webm:
-    type: file
-    label: Vídeo WEBM
-  arquivo_mp4:
-    type: file
-    label: Vídeo MP4
-  capa_desktop:
-    type: image
-  capa_mobile:
-    type: image
-  foto_seo:
-    type: image
-  logo_topo:
-    type: image
-  favicon:
-    type: image
-  icon_whatsapp:
-    type: image
-  icon_email:
-    type: image
-  icon_instagram:
-    type: image
----
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -128,28 +21,28 @@ _inputs:
   
   <meta property="og:site_name" content="Tarcísio Lima" />
 
-  <meta property="og:image" content="https://www.tarcisiolima.com.br{{ page.imagens.foto_seo }}" />
+  <meta property="og:image" content="https://www.tarcisiolima.com.br/assets/images/foto-seo.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:locale" content="pt_BR" />
 
-  <link rel="icon" type="image/png" href="{{ page.imagens.favicon }}" />
-  <link rel="apple-touch-icon" href="{{ page.imagens.favicon }}" />
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ page.imagens.favicon }}" />
-  <link rel="icon" type="image/png" sizes="512x512" href="{{ page.imagens.favicon }}" />
+  <link rel="icon" type="image/png" href="assets/images/icone.png" />
+  <link rel="apple-touch-icon" href="assets/images/icone.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/icone.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/icone.png" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 
   <style>
     :root {
-      --bg-main: {{ page.tema_cor_fundo }};
-      --bg-card: {{ page.tema_cor_cards }};
-      --text-main: {{ page.tema_cor_texto }};
-      --accent: {{ page.tema_cor_destaque }};
+      --bg-main: #050505;
+      --bg-card: #18191b;
+      --text-main: #ffffff;
+      --accent: #e6d37a;
     }
-    body { font-family: '{{ page.tema_fonte_texto }}', sans-serif; }
-    h1, h2, h3 { font-family: '{{ page.tema_fonte_titulos }}', serif; }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
   </style>
 
   <script type="application/ld+json">
@@ -158,10 +51,10 @@ _inputs:
     "@type": "MusicGroup",
     "name": "Tarcísio Lima",
     "url": "https://www.tarcisiolima.com.br/",
-    "logo": "https://www.tarcisiolima.com.br/{{ page.imagens.favicon }}",
-    "image": "https://www.tarcisiolima.com.br{{ page.imagens.foto_seo }}",
+    "logo": "https://www.tarcisiolima.com.br/assets/images/icone.png",
+    "image": "https://www.tarcisiolima.com.br/assets/images/foto-seo.png",
     "description": "Cantor e compositor brasileiro.",
-    "sameAs": ["{{ page.instagram_url }}"],
+    "sameAs": ["https://www.instagram.com/tarcisiolima_cantor/"],
     "location": { "@type": "Place", "name": "Brasil" }
   }
   </script>
@@ -179,8 +72,8 @@ _inputs:
 
 <body>
 
-  <a href="https://api.whatsapp.com/send?phone={{ page.whatsapp_numero }}&text={{ page.whatsapp_mensagem_ola }}" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
-    <img src="./imagens/whatsapp.png" alt="WhatsApp Tarcísio Lima" />
+  <a href="https://api.whatsapp.com/send?phone=5581992192237&text=Ol%C3%A1%2C%20Tarc%C3%ADsio%21%20Tenho%20interesse%20em%20contratar%20o%20seu%20show%21%20%F0%9F%8E%B8%F0%9F%8E%BC%F0%9F%8E%A4" class="whatsapp-fixo" target="_blank" aria-label="Falar no WhatsApp">
+    <img src="assets/images/whatsapp.png" alt="WhatsApp Tarcísio Lima" />
   </a>
 
   <div id="fundoEscuro"></div>
@@ -189,7 +82,7 @@ _inputs:
     <div class="area-topo">
       <button class="btn-menu" id="btnMenu" aria-label="Abrir menu">☰</button>
       <a href="index.html" class="logo-topo">
-        <img src="{{ page.imagens.logo_topo }}" alt="Tarcísio Lima" />
+        <img src="assets/images/logo.png" alt="Tarcísio Lima" />
       </a>
       <nav class="menu-topo" id="menuTopo">
         <a href="#inicio">Início</a>
@@ -203,25 +96,24 @@ _inputs:
   <main>
     <section class="capa" id="inicio">
       <picture>
-        <source media="(max-width: 768px)" srcset="{{ page.imagens.capa_mobile }}" />
-        <img src="{{ page.imagens.capa_desktop }}" alt="Foto do cantor Tarcísio Lima" class="foto-capa" />
+        <source media="(max-width: 768px)" srcset="assets/images/capa-mobile.jpg" />
+        <img src="assets/images/capa-desktop.jpg" alt="Foto do cantor Tarcísio Lima" class="foto-capa" />
       </picture>
     </section>
 
     <section class="agenda" id="agenda">
-      <h2>Agenda de Shows</h2>
-      <div class="agenda-wrapper">
-        <button class="agenda-btn prev" aria-label="Anterior">&#10094;</button>
-        <div class="agenda-track">
-          {% for show in page.agenda %}
-          <article class="agenda-card">
-            <span class="data">{{ show.data }}</span>
-            <h3>{{ show.cidade }}</h3>
-            <p>{{ show.local }}</p>
-          </article>
-          {% endfor %}
+      <div class="agenda-premium-card js-scroll">
+        <div class="agenda-premium-icon">
+          <img src="assets/images/instagram.png" alt="Instagram Tarcísio Lima">
         </div>
-        <button class="agenda-btn next" aria-label="Próximo">&#10095;</button>
+        <div class="agenda-premium-info">
+          <h2>Acompanhe a Agenda</h2>
+          <p>Fique por dentro de todos os shows da semana, bastidores e novidades em tempo real diretamente no Instagram.</p>
+          <a href="https://www.instagram.com/tarcisiolima_cantor/" target="_blank" class="btn-instagram-premium">
+            <span>Seguir @tarcisiolima_cantor</span>
+            <span class="seta-btn">→</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -229,12 +121,22 @@ _inputs:
       <section class="videos" id="videos">
         <h2>Apresentações</h2>
         <div class="area-videos">
-          {% for video in page.videos_destaque %}
+          
           <video autoplay muted loop playsinline>
-            <source src="{{ video.arquivo_webm }}" type="video/webm" />
-            <source src="{{ video.arquivo_mp4 }}" type="video/mp4" />
+            <source src="assets/videos/video01.webm" type="video/webm" />
+            <source src="assets/videos/video01.mp4" type="video/mp4" />
           </video>
-          {% endfor %}
+          
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/video02.webm" type="video/webm" />
+            <source src="assets/videos/video02.mp4" type="video/mp4" />
+          </video>
+          
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/video03.webm" type="video/webm" />
+            <source src="assets/videos/video03.mp4" type="video/mp4" />
+          </video>
+          
         </div>
       </section>
 
@@ -242,23 +144,23 @@ _inputs:
         <section class="sobre" id="sobre">
           <div class="sobre-conteudo">
             <h2>Sobre Tarcísio Lima</h2>
-            <p>{{ page.sobre_texto }}</p>
+            <p>Tarcísio Lima é um cantor pernambucano reconhecido pela versatilidade, carisma e energia no palco. Com um show dinâmico e envolvente, apresenta um repertório que transita entre Forró, Brega, Sertanejo e MPB, garantindo conexão com diferentes públicos e tipos de evento. Atuando em toda a Região Metropolitana do Recife, com destaque para Igarassu-PE, sua cidade natal, Tarcísio Lima vem se consolidando como artista na cena musical regional. Além da carreira solo, é líder e cantor da Banda Católica Libertah, unindo musicalidade, mensagem e propósito em suas apresentações.</p>
           </div>
         </section>
 
         <section class="contato" id="contato">
           <h2>Contato para Shows</h2>
           <div class="contato-redes">
-            <a href="https://api.whatsapp.com/send?phone={{ page.whatsapp_numero }}&text={{ page.whatsapp_mensagem_contato }}" target="_blank" class="contato-item">
-              <img src="{{ page.imagens.icon_whatsapp }}" alt="WhatsApp" />
+            <a href="https://api.whatsapp.com/send?phone=5581992192237&text=%F0%9F%8E%B6Ol%C3%A1%2C%20Tarc%C3%ADsio%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20shows%20e%20valores." target="_blank" class="contato-item">
+              <img src="assets/images/whatsapp1.png" alt="WhatsApp" />
               <span>WhatsApp</span>
             </a>
-            <a href="mailto:{{ page.email_contato }}" class="contato-item">
-              <img src="{{ page.imagens.icon_email }}" alt="Email" />
+            <a href="mailto:contato@tarcisiolima.com.br" class="contato-item">
+              <img src="assets/images/email.png" alt="Email" />
               <span>Email</span>
             </a>
-            <a href="{{ page.instagram_url }}" target="_blank" class="contato-item">
-              <img src="{{ page.imagens.icon_instagram }}" alt="Instagram" />
+            <a href="https://www.instagram.com/tarcisiolima_cantor/" target="_blank" class="contato-item">
+              <img src="assets/images/instagram.png" alt="Instagram" />
               <span>Instagram</span>
             </a>
           </div>
@@ -270,137 +172,7 @@ _inputs:
   <footer class="rodape">
     <p>&copy; 2026 Tarcísio Lima. Todos os direitos reservados</p>
   </footer>
-<script>
-    // ======================================================
-    // 1. MENU MOBILE (SEU CÓDIGO ORIGINAL - MANTIDO)
-    // ======================================================
-    const btn = document.getElementById('btnMenu');
-    const menu = document.getElementById('menuTopo');
-    const fundo = document.getElementById('fundoEscuro');
-    const menuLinks = document.querySelectorAll('.menu-topo a');
-
-    function toggleMenu() {
-      menu.classList.toggle('ativo');
-      fundo.classList.toggle('ativo');
-      btn.textContent = menu.classList.contains('ativo') ? '✕' : '☰';
-    }
-    btn.onclick = toggleMenu;
-    fundo.onclick = toggleMenu;
-    menuLinks.forEach(link => { link.onclick = () => { if(menu.classList.contains('ativo')) toggleMenu(); }; });
-
-
-    // ======================================================
-    // 2. AGENDA INTELIGENTE (ATUALIZADO PARA LOOP INFINITO)
-    // ======================================================
-    const track = document.querySelector('.agenda-track');
-    const btnNext = document.querySelector('.next');
-    const btnPrev = document.querySelector('.prev');
-    const wrapper = document.querySelector('.agenda-wrapper');
-    
-    let posicao = 0;
-    let autoPlayTimer;
-    let isPaused = false; 
-
-    // Calcula largura (Corrige o "Troncho" no Mobile)
-    function getCardWidth() {
-        const card = document.querySelector('.agenda-card');
-        if (!card) return 0;
-        
-        // Mobile: Largura total da tela
-        if (window.innerWidth <= 768) {
-            return window.innerWidth;
-        }
-        // Desktop: Largura do card + margem lateral
-        const style = window.getComputedStyle(card);
-        const margin = parseFloat(style.marginRight) || 20;
-        return card.offsetWidth + margin;
-    }
-
-    // Função Unificada de Movimento
-    function mover(direcao) {
-        if (!track) return;
-        const cardWidth = getCardWidth();
-        const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-
-        if (direcao === 'proximo') {
-            // LOOP: Se chegar no fim, volta para o 0
-            if (posicao < maxScroll - 10) {
-                posicao += cardWidth;
-            } else {
-                posicao = 0; 
-            }
-        } else {
-            // Volta normal
-            if (posicao > 0) {
-                posicao -= cardWidth;
-            } 
-            if (posicao < 0) posicao = 0;
-        }
-        track.style.transform = `translateX(-${posicao}px)`;
-    }
-
-   // Robô Automático (SÓ PARA CELULAR)
-    function iniciarAutoPlay() {
-        clearInterval(autoPlayTimer);
-        autoPlayTimer = setInterval(() => {
-            // Verifica se é celular (tela menor que 768px)
-            const isMobile = window.innerWidth <= 768;
-
-            // Só roda se for Mobile E não estiver pausado
-            if (isMobile && !isPaused) {
-                mover('proximo');
-            }
-        }, 3000); 
-    }
-
-    // Pausa Inteligente (Espera 6s se o usuário mexer)
-    function resetarTimerInteligente() {
-        isPaused = true; 
-        clearInterval(autoPlayTimer); 
-        setTimeout(() => {
-            isPaused = false;
-            iniciarAutoPlay();
-        }, 6000); 
-    }
-
-    // Inicia tudo
-    iniciarAutoPlay();
-
-    // Eventos dos Botões
-    if(btnNext) {
-        btnNext.onclick = () => { mover('proximo'); resetarTimerInteligente(); };
-    }
-    if(btnPrev) {
-        btnPrev.onclick = () => { mover('anterior'); resetarTimerInteligente(); };
-    }
-
-    // Eventos de Toque (Pausa para leitura)
-    if(wrapper) {
-        wrapper.addEventListener('touchstart', () => { isPaused = true; });
-        wrapper.addEventListener('touchend', resetarTimerInteligente);
-        wrapper.addEventListener('mouseenter', () => { isPaused = true; });
-        wrapper.addEventListener('mouseleave', resetarTimerInteligente);
-    }
-
-
-    // ======================================================
-    // 3. ANIMAÇÕES JS-SCROLL (SEU CÓDIGO ORIGINAL - MANTIDO)
-    // ======================================================
-    const elementosParaAnimar = document.querySelectorAll('.agenda > *, .videos > *, .sobre > *, .contato > *');
-    elementosParaAnimar.forEach(el => el.classList.add('js-scroll'));
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('ativo');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0, rootMargin: "0px 0px -50px 0px" }); // Seus parâmetros originais
-    
-    elementosParaAnimar.forEach((el) => observer.observe(el));
-</script>
   
+  <script src="assets/js/main.js"></script>
 </body>
-    </html>
-    
+</html>
